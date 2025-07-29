@@ -147,6 +147,15 @@ export default function EthiopianOrthodoxSite() {
                 ትምህርቶች በዚህ መጽሐፍ ውስጥ በዝርዝር ተብራርተዋል። የመጽሐፉ ዋና ዓላማ የቤተ ክርስቲያናችንን
                 ታሪክ እና ትምህርት ለወደፊቱ ትውልድ ማስተላለፍ ነው።
               </p>
+              <div className="text-right">
+                <p
+                  className="text-xl font-semibold"
+                  style={{ color: "#03304c" }}
+                >
+                  ዲን.አቤል ካሳሁን <br />
+                  ደራሲው
+                </p>
+              </div>
             </div>
             <div className="bg-gradient-to-br p-12 rounded-2xl text-center ">
               <Image
