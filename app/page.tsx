@@ -3,7 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Facebook, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Youtube,
+  Phone,
+  Mail,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import testimonialsData from "@/data/testimonials.json";
 import quotesData from "@/data/quotes.json";
 
@@ -306,13 +315,13 @@ export default function EthiopianOrthodoxSite() {
                     }`}
                   >
                     <CardContent className="p-6">
-                      <div className="text-6xl  text-gray-300 font-ketefa italic">
+                      <div className="text-4xl text-gray-300 font-ketefa italic">
                         "
                       </div>
-                      <p className="text-lg leading-relaxed mb-1 text-gray-700">
+                      <p className="text-base leading-relaxed mb-1 text-gray-700">
                         {testimonial.quote}
                       </p>
-                      <div className="text-6xl  text-gray-300 text-right font-serif italic">
+                      <div className="text-4xl text-gray-300 text-right font-serif italic">
                         "
                       </div>
                       <div className="flex flex-col items-center text-center">
@@ -336,10 +345,10 @@ export default function EthiopianOrthodoxSite() {
                           </div>
                         )}
                         <div>
-                          <p className="font-bold text-gray-900 text-lg">
+                          <p className="font-bold text-gray-900 text-base">
                             {testimonial.author.name}
                           </p>
-                          <p className="text-gray-600">
+                          <p className="text-gray-600 text-sm">
                             {testimonial.author.title}
                           </p>
                         </div>
@@ -353,17 +362,19 @@ export default function EthiopianOrthodoxSite() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition-colors shadow-lg z-10"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
+              style={{ backgroundColor: "#D9D9D9" }}
               disabled={currentSlide === 0}
             >
-              ←
+              <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition-colors shadow-lg z-10"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
+              style={{ backgroundColor: "#D9D9D9" }}
               disabled={currentSlide >= totalSlides - 1}
             >
-              →
+              <ChevronRight className="w-6 h-6" />
             </button>
 
             {/* Slide Indicators */}
