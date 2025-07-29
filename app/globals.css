@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Ketefa";
+  src: url("/ketefa.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.ethiopic-font {
+  font-family: "Inter", "Menbere", "Montserrat", "Poppins", system-ui,
+    -apple-system, sans-serif;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+.ethiopic-font h1,
+.ethiopic-font h2,
+.ethiopic-font h3,
+.ethiopic-font h4,
+.ethiopic-font h5,
+.ethiopic-font h6 {
+  font-family: "Inter", "Menbere", "Montserrat", "Poppins", system-ui,
+    -apple-system, sans-serif;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ethiopic-font p,
+.ethiopic-font span,
+.ethiopic-font div {
+  font-family: "Inter", "Menbere", "Montserrat", "Poppins", system-ui,
+    -apple-system, sans-serif;
+  line-height: 1.7;
+}
+
+.hero-title {
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.ketefa-font {
+  font-family: "Ketefa", "Menbere", system-ui, -apple-system, sans-serif !important;
+  font-weight: normal;
+  font-style: normal;
+}
