@@ -1,8 +1,27 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Facebook, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import testimonialsData from "@/data/testimonials.json";
 
 export default function EthiopianOrthodoxSite() {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const totalSlides = testimonialsData.testimonials.length;
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -247,66 +266,79 @@ export default function EthiopianOrthodoxSite() {
               የመምህራን አስተያየት
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-blue-900 text-white transform hover:scale-105 transition-transform duration-300">
-              <CardContent className="p-10">
-                <div className="text-8xl mb-6 opacity-30">"</div>
-                <p className="text-lg leading-relaxed mb-8">
-                  ይህ መጽሐፍ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ታሪክ እና ትምህርት ላይ ጠቃሚ
-                  መረጃዎችን ያካትታል። ለእያንዳንዱ ኦርቶዶክስ ተዋሕዶ አባል አስፈላጊ የሆነ መጽሐፍ ነው። በተለይ
-                  የአባቶች ትምህርቶች በዚህ መጽሐፍ ውስጥ በሚያምር ሁኔታ ተቀምጠዋል።
-                </p>
-                <div className="flex items-center">
-                  <div className="w-16 h-16 bg-yellow-600 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">አ</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg">አባ ገብረ ሚካኤል</p>
-                    <p className="text-blue-200">የቤተ ክርስቲያን መምህር</p>
-                  </div>
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {testimonialsData.testimonials.map((testimonial, index) => (
+                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
+                  <Card
+                    className={`bg-gray-100 transition-all duration-300 shadow-xl max-w-lg mx-auto rounded-lg ${
+                      currentSlide === index
+                        ? "transform rotate-0 scale-100 blur-0"
+                        : index < currentSlide
+                        ? "transform -rotate-12 scale-75 blur-sm opacity-50"
+                        : "transform rotate-12 scale-75 blur-sm opacity-50"
+                    }`}
+                  >
+                    <CardContent className="p-10">
+                      <div className="text-6xl mb-0 text-gray-300">"</div>
+                      <p className="text-lg leading-relaxed mb-8 text-gray-700">
+                        {testimonial.quote}
+                      </p>
+                      <div className="text-6xl mb-0 text-gray-300 text-right">
+                        "
+                      </div>
+                      <div className="flex items-center">
+                        {testimonial.author.image ? (
+                          <div className="w-16 h-16 rounded-full mr-4 overflow-hidden flex items-center justify-center">
+                            <Image
+                              src={testimonial.author.image}
+                              alt={testimonial.author.name}
+                              width={64}
+                              height={64}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className={`w-16 h-16 bg-${testimonial.author.avatarColor} rounded-full mr-4 flex items-center justify-center`}
+                          >
+                            <span className="text-white font-bold text-lg">
+                              {testimonial.author.avatar}
+                            </span>
+                          </div>
+                        )}
+                        <div>
+                          <p className="font-bold text-gray-900 text-lg">
+                            {testimonial.author.name}
+                          </p>
+                          <p className="text-gray-600">
+                            {testimonial.author.title}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
 
-            <Card className="bg-gray-100 transform hover:scale-105 transition-transform duration-300">
-              <CardContent className="p-10">
-                <div className="text-8xl mb-6 text-gray-300">"</div>
-                <p className="text-lg leading-relaxed mb-8 text-gray-700">
-                  በዚህ መጽሐፍ ውስጥ የተካተቱት መንፈሳዊ ትምህርቶች ለእኔ ብዙ ጠቃሚ ሆነዋል። የጸሎት እና የጾም
-                  ትምህርቶቹ በተለይ አስተማሪ ናቸው። ለሁሉም የቤተ ክርስቲያን አባላት እመክራለሁ።
-                </p>
-                <div className="flex items-center">
-                  <div className="w-16 h-16 bg-blue-900 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">ሳ</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900 text-lg">
-                      ወ/ሮ ሳራ ተስፋዬ
-                    </p>
-                    <p className="text-gray-600">የቤተ ክርስቲያን አባል</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-blue-900 text-white transform hover:scale-105 transition-transform duration-300">
-              <CardContent className="p-10">
-                <div className="text-8xl mb-6 opacity-30">"</div>
-                <p className="text-lg leading-relaxed mb-8">
-                  ቅዱስ አባ ክርስቶስ ሳምራ በዚህ መጽሐፍ ውስጥ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያንን
-                  ጥልቅ ትምህርቶች በሚያምር ሁኔታ አቅርበዋል። ይህ መጽሐፍ የእኛ ቤተ ክርስቲያን ሀብት ነው።
-                </p>
-                <div className="flex items-center">
-                  <div className="w-16 h-16 bg-yellow-600 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">ዮ</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-lg">ዲ/ን ዮሐንስ ወልደ</p>
-                    <p className="text-blue-200">የቤተ ክርስቲያን ሊቀ ዲያቆን</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Slide Indicators */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {testimonialsData.testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    currentSlide === index
+                      ? "bg-gray-800"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
