@@ -5,21 +5,38 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Facebook, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
 import testimonialsData from "@/data/testimonials.json";
+import quotesData from "@/data/quotes.json";
 
 export default function EthiopianOrthodoxSite() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [currentQuoteSlide, setCurrentQuoteSlide] = React.useState(0);
   const totalSlides = testimonialsData.testimonials.length;
+  const totalQuoteSlides = quotesData.quotes.length;
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    setCurrentSlide((prev) => Math.min(prev + 1, totalSlides - 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+    setCurrentSlide((prev) => Math.max(prev - 1, 0));
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  const nextQuoteSlide = () => {
+    setCurrentQuoteSlide((prev) => (prev + 1) % totalQuoteSlides);
+  };
+
+  const prevQuoteSlide = () => {
+    setCurrentQuoteSlide(
+      (prev) => (prev - 1 + totalQuoteSlides) % totalQuoteSlides
+    );
+  };
+
+  const goToQuoteSlide = (index: number) => {
+    setCurrentQuoteSlide(index);
   };
 
   return (
@@ -225,19 +242,19 @@ export default function EthiopianOrthodoxSite() {
                 className="leading-relaxed mb-6 text-lg"
                 style={{ color: "#03304c" }}
               >
-                ዲያቆን አቤል ካሳሁን መኩሪያ በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተክርስቲያን መምህርና ደራሲ ሲሆኑ አራት
-                መጻሕፍትን ጽፈው አበርክተዋል። በአጫጭር ጽሑፎቻቸው በSocial Media በሰፊው ይታወቃሉ። ከባድ
-                የሚባሉ ሀሳቦችን ቀላል በሆነ መንገድ መግለጽ የመቻል አቅምና የሀሳብን ፍሰት አሰናስሎ የማቅረብ ልዩ
-                ችሎታ አላቸው። በዚህ መጽሐፋቸውም ያሳዩን እሱን ነው። በተለይ በስብከቶቻቸው እና ትምህረቶቻቸው
-                ይህንን በማድረግ ይታወቃሉ።
+                Abel Kassahun Mekuria is a Deacon, Preacher and Author under the
+                Ethiopian Orthodox Tewahido Church. He wrote 4 books. He reached
+                to his readers by demystifying intricate themes with easy to
+                understand and eloquent flow of ideas.
               </p>
               <div className="text-right">
                 <p
                   className="text-xl font-semibold"
                   style={{ color: "#03304c" }}
                 >
-                  ዲን.አቤል ካሳሁን <br />
-                  ደራሲው
+                  Dcn. Abel Kassahun
+                  <br />
+                  Author
                 </p>
               </div>
             </div>
@@ -269,43 +286,51 @@ export default function EthiopianOrthodoxSite() {
           <div className="relative overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              style={{
+                transform: `translateX(-${
+                  Math.max(0, currentSlide - 1) * 33.333
+                }%)`,
+              }}
             >
               {testimonialsData.testimonials.map((testimonial, index) => (
-                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
+                <div key={testimonial.id} className="w-1/3 flex-shrink-0 px-4">
                   <Card
-                    className={`bg-gray-100 transition-all duration-300 shadow-xl max-w-lg mx-auto rounded-lg ${
+                    className={`bg-gray-100 transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg ${
                       currentSlide === index
-                        ? "transform rotate-0 scale-100 blur-0"
-                        : index < currentSlide
+                        ? "transform rotate-0 scale-100 blur-0 opacity-100"
+                        : index === currentSlide - 1
                         ? "transform -rotate-12 scale-75 blur-sm opacity-50"
-                        : "transform rotate-12 scale-75 blur-sm opacity-50"
+                        : index === currentSlide + 1
+                        ? "transform rotate-12 scale-75 blur-sm opacity-50"
+                        : "transform rotate-0 scale-75 blur-sm opacity-30"
                     }`}
                   >
-                    <CardContent className="p-10">
-                      <div className="text-6xl mb-0 text-gray-300">"</div>
-                      <p className="text-lg leading-relaxed mb-8 text-gray-700">
-                        {testimonial.quote}
-                      </p>
-                      <div className="text-6xl mb-0 text-gray-300 text-right">
+                    <CardContent className="p-6">
+                      <div className="text-6xl  text-gray-300 font-ketefa italic">
                         "
                       </div>
-                      <div className="flex items-center">
+                      <p className="text-lg leading-relaxed mb-1 text-gray-700">
+                        {testimonial.quote}
+                      </p>
+                      <div className="text-6xl  text-gray-300 text-right font-serif italic">
+                        "
+                      </div>
+                      <div className="flex flex-col items-center text-center">
                         {testimonial.author.image ? (
-                          <div className="w-16 h-16 rounded-full mr-4 overflow-hidden flex items-center justify-center">
+                          <div className="w-30 h-30 rounded-full shadow-lg overflow-hidden flex items-center justify-center">
                             <Image
                               src={testimonial.author.image}
                               alt={testimonial.author.name}
-                              width={64}
-                              height={64}
+                              width={80}
+                              height={80}
                               className="w-full h-full object-cover"
                             />
                           </div>
                         ) : (
                           <div
-                            className={`w-16 h-16 bg-${testimonial.author.avatarColor} rounded-full mr-4 flex items-center justify-center`}
+                            className={`w-20 h-20 bg-${testimonial.author.avatarColor} rounded-full mb-3 shadow-lg flex items-center justify-center`}
                           >
-                            <span className="text-white font-bold text-lg">
+                            <span className="text-white font-bold text-xl">
                               {testimonial.author.avatar}
                             </span>
                           </div>
@@ -325,8 +350,24 @@ export default function EthiopianOrthodoxSite() {
               ))}
             </div>
 
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition-colors shadow-lg z-10"
+              disabled={currentSlide === 0}
+            >
+              ←
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition-colors shadow-lg z-10"
+              disabled={currentSlide >= totalSlides - 1}
+            >
+              →
+            </button>
+
             {/* Slide Indicators */}
-            <div className="flex justify-center mt-8 space-x-2">
+            <div className="flex justify-center mt-4 space-x-2">
               {testimonialsData.testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -360,24 +401,59 @@ export default function EthiopianOrthodoxSite() {
               className="text-5xl font-bold mb-4"
               style={{ color: "#03304c" }}
             >
-              ተጨማሪ
+              ጥቅሶች
             </h2>
           </div>
-          <div className="max-w-6xl mx-auto">
-            <Card className="bg-blue-900 text-white">
-              <CardContent className="p-16 text-center">
-                <div className="text-9xl mb-8 opacity-30">"</div>
-                <p className="text-2xl leading-relaxed mb-12 max-w-4xl mx-auto">
-                  ይህ መጽሐፍ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን መንፈሳዊ ሀብት ነው። በዚህ መጽሐፍ
-                  ውስጥ የተካተቱት ትምህርቶች የአባቶቻችንን ጥልቅ ዕውቀት እና የመንፈሳዊ ሕይወት መመሪያዎች ናቸው።
-                  ለእያንዳንዱ ኦርቶዶክስ ተዋሕዶ አባል ይህ መጽሐፍ እንደ መንፈሳዊ መመሪያ ሊያገለግል ይችላል።
-                  የቤተ ክርስቲያናችን ታሪክ፣ ትምህርት እና ወግ በዚህ መጽሐፍ ውስጥ በሚያምር ሁኔታ ተቀምጧል።
-                </p>
-                <div className="text-right">
-                  <p className="text-2xl font-bold">ቅዱስ አባቶች ገጽ-22</p>
+          <div className="relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentQuoteSlide * 100}%)` }}
+            >
+              {quotesData.quotes.map((quote, index) => (
+                <div key={quote.id} className="w-full flex-shrink-0 px-4">
+                  <Card
+                    className={`bg-gray-100 transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg ${
+                      currentQuoteSlide === index
+                        ? "transform rotate-0 scale-100 blur-0"
+                        : index < currentQuoteSlide
+                        ? "transform -rotate-12 scale-75 blur-sm opacity-50"
+                        : "transform rotate-12 scale-75 blur-sm opacity-50"
+                    }`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="text-6xl mb-1 text-gray-300 font-serif italic">
+                        "
+                      </div>
+                      <p className="text-lg leading-relaxed mb-1 text-gray-700">
+                        {quote.quote}
+                      </p>
+                      <div className="text-6xl mb-4 text-gray-300 text-right font-serif italic">
+                        "
+                      </div>
+                      <div className="text-right">
+                        <p className="font-bold text-gray-900 text-lg">
+                          {quote.author.name}፤ {quote.author.page}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
+            {/* Quote Slide Indicators */}
+            <div className="flex justify-center mt-4 space-x-2">
+              {quotesData.quotes.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToQuoteSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    currentQuoteSlide === index
+                      ? "bg-gray-800"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
