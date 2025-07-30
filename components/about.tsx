@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 about"
+      className="py-20 about relative"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
@@ -15,7 +15,8 @@ export default function About() {
         minHeight: "100vh",
       }}
     >
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 backdrop-blur-2xl bg-white/5"></div>
+      <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-4">
           <h2 className="text-5xl font-bold mb-4" style={{ color: "#03304c" }}>
             ነገረ መጽሐፍ

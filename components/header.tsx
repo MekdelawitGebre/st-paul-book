@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,18 +15,49 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        "about",
+        "author",
+        "testimonials",
+        "quotes",
+        "readers",
+        "programs",
+      ];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navItems = [
-    { href: "#about", label: "ነገረ መጽሐፍ" },
-    { href: "#author", label: "ደራሲው" },
-    { href: "#testimonials", label: "መምሕራን" },
-    { href: "#quotes", label: "ጥቅሶች" },
-    { href: "#readers", label: "አንባብያን" },
-    { href: "#programs", label: "መርሐ ግብራት" },
+    { href: "#about", label: "ነገረ መጽሐፍ", id: "about" },
+    { href: "#author", label: "ደራሲው", id: "author" },
+    { href: "#testimonials", label: "መምሕራን", id: "testimonials" },
+    { href: "#quotes", label: "ጥቅሶች", id: "quotes" },
+    { href: "#readers", label: "አንባብያን", id: "readers" },
+    { href: "#programs", label: "መርሐ ግብራት", id: "programs" },
   ];
 
   return (
     <header
-      className="shadow-sm relative z-50"
+      className="sticky top-0 shadow-lg z-50 backdrop-blur-2xl border-b border-white/20"
       style={{
         backgroundImage: "url(/hero-bg.png)",
         backgroundSize: "cover",
@@ -57,7 +89,13 @@ export default function Header() {
               >
                 <span className="relative z-10 group-hover:text-[#03304c] transition-all duration-300 group-hover:scale-105 font-medium">
                   {item.label}
-                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#03304c] group-hover:w-full group-hover:h-1 transition-all duration-500 ease-out rounded-full"></div>
+                  <div
+                    className={`absolute -bottom-1 left-0 bg-[#03304c] transition-all duration-500 ease-out rounded-full ${
+                      activeSection === item.id
+                        ? "w-full h-1"
+                        : "w-0 h-1 group-hover:w-full"
+                    }`}
+                  ></div>
                 </span>
               </a>
             ))}
