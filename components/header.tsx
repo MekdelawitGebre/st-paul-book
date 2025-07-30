@@ -57,8 +57,10 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 shadow-lg z-50 backdrop-blur-2xl border-b border-white/20"
+      className="sticky top-0 shadow-2xl z-50 backdrop-blur-3xl border-b border-white/30"
       style={{
+        background:
+          "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
         backgroundImage: "url(/hero-bg.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",

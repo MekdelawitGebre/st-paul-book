@@ -15,7 +15,7 @@ export default function Hero() {
       }}
     >
       <div className="container mx-auto px-2 relative z-4">
-        <div className="flex justify-center items-center min-h-[400px] md:min-h-[600px] py-4 md:py-8">
+        <div className="flex justify-center items-center min-h-[400px] md:min-h-[600px] py-2 md:py-4">
           <div className="relative w-full">
             <Image
               src="/hero-text-image.png"
