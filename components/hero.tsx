@@ -14,7 +14,7 @@ export default function Hero() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container mx-auto px-2 relative z-4">
+      <div className="container mx-auto px-8 relative z-4">
         <div className="flex justify-center items-center min-h-[400px] md:min-h-[600px] py-2 md:py-4">
           <div className="relative w-full">
             <Image

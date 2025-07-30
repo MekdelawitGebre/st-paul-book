@@ -4,7 +4,7 @@ import { Send, Facebook, Instagram } from "lucide-react";
 
 export default function FooterBanner() {
   return (
-    <div className="w-full bg-gray-100 py-4 px-6">
+    <div className="w-full bg-gray-100 py-4 px-8">
       <div className="flex items-center justify-between">
         {/* Left Section - Author Name */}
         <div className="flex-1">

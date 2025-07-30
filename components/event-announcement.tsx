@@ -23,7 +23,7 @@ interface Event {
 
 export default function EventAnnouncement() {
   return (
-    <div className="w-full py-4">
+    <div className="w-full py-4 px-8">
       <div className="flex flex-col">
         {eventsData.map((event: Event) => (
           <Card
