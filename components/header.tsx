@@ -43,7 +43,7 @@ export default function Header() {
                 "Ketefa, Menbere, system-ui, -apple-system, sans-serif",
             }}
           >
-            ቅዱስ ጳውሎስ
+            ቅ ዱ ስ&nbsp;&nbsp; ጳ ው ሎ ስ
           </div>
 
           {/* Desktop Navigation */}
@@ -52,10 +52,11 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="transition-colors text-sm hover:opacity-80"
+                className="relative overflow-hidden transition-all duration-300 text-sm hover:opacity-80 group"
                 style={{ color: "#03304c" }}
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
               </a>
             ))}
           </nav>
