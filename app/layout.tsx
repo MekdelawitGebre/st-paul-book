@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ቅዱስ ዓቢይ ክርስቶስ - Ethiopian Orthodox Book",
-  description:
-    "A spiritual guide by Kidus Aba Kristos for the Ethiopian Orthodox Tewahedo Church",
+  title: "ቅዱስ ጳውሎስ",
+  description: "የቅዱስ ጳውሎስን ስራ እና ህይወት የምናወሳበት መጽሐፍ ነው",
 };
 
 export default function RootLayout({
