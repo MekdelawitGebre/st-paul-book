@@ -55,8 +55,10 @@ export default function Header() {
                 className="relative overflow-hidden transition-all duration-300 text-sm hover:opacity-80 group"
                 style={{ color: "#03304c" }}
               >
-                <span className="relative z-10">{item.label}</span>
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                <span className="relative z-10 group-hover:text-[#03304c] transition-all duration-300 group-hover:scale-105 font-medium">
+                  {item.label}
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#03304c] group-hover:w-full group-hover:h-1 transition-all duration-500 ease-out rounded-full"></div>
+                </span>
               </a>
             ))}
           </nav>
