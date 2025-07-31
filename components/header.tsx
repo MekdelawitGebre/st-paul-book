@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Mail, Facebook, Instagram } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -149,32 +149,40 @@ export default function Header() {
       {/* Mobile Glass Sidebar */}
       {isMenuOpen && (
         <>
-          {/* Backdrop */}
+          {/* Background Blur Layer */}
           <div
-            className="fixed inset-0 glass-backdrop z-40 md:hidden transition-all duration-500"
-            onClick={closeMenu}
-          />
-
-          {/* Sidebar Blur Area */}
-          <div
-            className="fixed top-0 right-0 h-full w-80 z-40 md:hidden transition-all duration-500 ease-out sidebar-blur-area"
+            className="fixed inset-0 z-30 md:hidden transition-all duration-500"
             style={{
-              opacity: isMenuOpen ? 1 : 0,
-              transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+              backdropFilter: "blur(100px)",
+              WebkitBackdropFilter: "blur(100px)",
+              background: "rgba(0, 0, 0, 0.3)",
             }}
+            onClick={closeMenu}
           />
 
           {/* Glass Sidebar */}
           <div
-            className="fixed top-0 right-0 h-full w-80 z-50 md:hidden transform transition-all duration-500 ease-out"
             style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              height: "100vh",
+              width: "320px",
+              zIndex: 50,
               transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+              transition: "all 0.5s ease-out",
+              background: "rgba(255, 255, 255, 0.9)",
+              backdropFilter: "blur(80px)",
+              WebkitBackdropFilter: "blur(80px)",
+              borderLeft: "1px solid rgba(255, 255, 255, 0.4)",
+              boxShadow:
+                "0 25px 50px -12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
             }}
           >
-            <div className="h-full w-full glass-sidebar">
+            <div className="h-full w-full">
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-white/30 glass-hover">
+                <div className="flex items-center justify-between p-6 border-b border-white/30">
                   <div
                     className="text-xl font-bold"
                     style={{ color: "#03304c" }}
@@ -183,7 +191,7 @@ export default function Header() {
                   </div>
                   <button
                     onClick={closeMenu}
-                    className="p-2 rounded-lg glass-hover"
+                    className="p-2 rounded-lg hover:bg-white/20 transition-colors"
                     style={{ color: "#03304c" }}
                   >
                     <X className="w-5 h-5" />
@@ -197,7 +205,7 @@ export default function Header() {
                       key={item.href}
                       href={item.href}
                       onClick={closeMenu}
-                      className="block p-4 rounded-lg glass-hover transition-all duration-300 group"
+                      className="block p-3 rounded-lg hover:bg-white/30 transition-all duration-300 group relative overflow-hidden"
                       style={{
                         animationDelay: `${index * 100}ms`,
                         animation: isMenuOpen
@@ -205,54 +213,16 @@ export default function Header() {
                           : "none",
                       }}
                     >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-2 h-2 rounded-full bg-[#03304c] opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                        <span
-                          className="text-lg font-medium"
-                          style={{ color: "#03304c" }}
-                        >
-                          {item.label}
-                        </span>
-                      </div>
+                      <span
+                        className="text-lg font-medium transition-all duration-300 group-hover:text-[#1a4a6b] relative z-10"
+                        style={{ color: "#03304c" }}
+                      >
+                        {item.label}
+                      </span>
+                      <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1a4a6b] transition-all duration-300 ease-out group-hover:w-full"></div>
                     </a>
                   ))}
                 </nav>
-
-                {/* Footer */}
-                <div className="p-6 border-t border-white/30 glass-hover">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-2">
-                      Connect with us
-                    </p>
-                    <div className="flex justify-center space-x-4">
-                      <a
-                        href="mailto:selam@dnabel.com"
-                        className="p-2 rounded-lg glass-hover"
-                        style={{ color: "#03304c" }}
-                      >
-                        <Mail className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://web.facebook.com/AbelKassahunMekuria12"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg glass-hover"
-                        style={{ color: "#03304c" }}
-                      >
-                        <Facebook className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://www.instagram.com/st.paul_book/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg glass-hover"
-                        style={{ color: "#03304c" }}
-                      >
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
