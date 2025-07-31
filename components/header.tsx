@@ -23,6 +23,9 @@ export default function Header() {
   };
 
   useEffect(() => {
+    // Check if window is defined (client-side)
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       const sections = [
         "about",
@@ -35,7 +38,10 @@ export default function Header() {
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(section);
+        const element =
+          typeof document !== "undefined"
+            ? document.getElementById(section)
+            : null;
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (

@@ -45,7 +45,10 @@ export default function Testimonials() {
             className="flex transition-transform duration-500 ease-in-out"
             style={{
               transform: `translateX(-${
-                currentSlide * (window.innerWidth >= 768 ? 33.333 : 100)
+                currentSlide *
+                (typeof window !== "undefined" && window.innerWidth >= 768
+                  ? 33.333
+                  : 100)
               }%)`,
             }}
           >
