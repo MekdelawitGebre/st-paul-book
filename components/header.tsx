@@ -185,9 +185,14 @@ export default function Header() {
                 <div className="flex items-center justify-between p-6 border-b border-white/30">
                   <div
                     className="text-xl font-bold"
-                    style={{ color: "#03304c" }}
+                    
+                    style={{
+                      color: "#03304c",
+                      fontFamily:
+                        "Ketefa, Menbere, system-ui, -apple-system, sans-serif",
+                    }}
                   >
-                    ቅዱስ ጳውሎስ
+                    ቅ ዱ ስ&nbsp;&nbsp; ጳ ው ሎ ስ
                   </div>
                   <button
                     onClick={closeMenu}
