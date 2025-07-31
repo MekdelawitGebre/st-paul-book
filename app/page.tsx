@@ -12,7 +12,15 @@ import FooterBanner from "@/components/footer-banner";
 
 export default function EthiopianOrthodoxSite() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div
+      className="min-h-screen bg-gray-50"
+      style={{
+        backgroundImage: "url('/hero-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <Header />
       <Hero />
       <About />
