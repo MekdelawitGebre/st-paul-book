@@ -25,7 +25,7 @@ export default function Author() {
           <div>
             <Image
               src="/auther.png"
-              alt="Author - Kidus Aba Kristos"
+              alt="Author - Dcn. Abel Kassahun"
               width={400}
               height={500}
               className="rounded-2xl shadow-xl mx-auto object-cover"
@@ -33,16 +33,33 @@ export default function Author() {
           </div>
           <div className="pt-0">
             <p
-              className="leading-relaxed mb-6 text-lg"
-              style={{ color: "#03304c" }}
+              className="leading-relaxed mb-6 text-lg text-justify"
+              style={{
+                color: "#03304c",
+                fontFamily: "Poppins, system-ui, -apple-system, sans-serif",
+              }}
             >
-              Abel Kassahun Mekuria is a Deacon, Preacher and Author under the
-              Ethiopian Orthodox Tewahido Church. He wrote 4 books. He reached
-              to his readers by demystifying intricate themes with easy to
-              understand and eloquent flow of ideas.
+              Abel Kassahun Mekuria is a devoted Deacon, dynamic preacher, and
+              accomplished author serving under the Ethiopian Orthodox Tewahedo
+              Church. With a deep commitment to the spiritual and theological
+              heritage of the ancient faith, he has authored four insightful
+              books that reflect his passion for making complex religious and
+              philosophical ideas accessible to the wider public. Through his
+              writings and sermons, Abel Kassahun is known for his unique
+              ability to break down intricate theological concepts into clear,
+              relatable language while maintaining a graceful and eloquent flow
+              of thought. His work continues to inspire and educate both the
+              faithful and those seeking a deeper understanding of Orthodox
+              Christianity.
             </p>
             <div className="text-right">
-              <p className="text-xl font-semibold" style={{ color: "#03304c" }}>
+              <p
+                className="text-xl font-semibold"
+                style={{
+                  color: "#03304c",
+                  fontFamily: "Poppins, system-ui, -apple-system, sans-serif",
+                }}
+              >
                 Dcn. Abel Kassahun
                 <br />
                 Author

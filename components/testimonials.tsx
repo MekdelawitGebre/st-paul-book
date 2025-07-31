@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, QuoteIcon } from "lucide-react";
 import testimonialsData from "@/data/testimonials.json";
 
 export default function Testimonials() {
@@ -63,14 +63,17 @@ export default function Testimonials() {
                   }`}
                 >
                   <CardContent className="p-6">
-                    <div className="text-4xl text-gray-300 font-ketefa italic">
-                      "
+                    <div className="text-4xl text-gray-300 flex items-start">
+                      <QuoteIcon
+                        className="text-4xl"
+                        style={{ color: "#03304c" }}
+                      />
                     </div>
                     <p className="text-base leading-relaxed mb-1 text-gray-700">
                       {testimonial.quote}
                     </p>
-                    <div className="text-4xl text-gray-300 text-right font-serif italic">
-                      "
+                    <div className="text-4xl text-gray-300 flex justify-end">
+                      <Quote className="text-4xl text-gray-300" />
                     </div>
                     <div className="flex flex-col items-center text-center">
                       {testimonial.author.image ? (
