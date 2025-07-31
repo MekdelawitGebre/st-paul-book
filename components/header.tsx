@@ -5,14 +5,21 @@ import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
   const toggleMenu = () => {
+    setIsAnimating(true);
     setIsMenuOpen(!isMenuOpen);
+    // Reset animation state after transition
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const closeMenu = () => {
+    setIsAnimating(true);
     setIsMenuOpen(false);
+    // Reset animation state after transition
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
   useEffect(() => {
@@ -57,7 +64,7 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 shadow-2xl z-50 backdrop-blur-3xl border-b border-white/30"
+      className="sticky top-0 shadow-2xl z-50 backdrop-blur-3xl border-b border-white/30 transition-all duration-500"
       style={{
         background:
           "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
@@ -106,39 +113,108 @@ export default function Header() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-lg transition-colors"
+            className="md:hidden p-2 rounded-lg glass-hover"
             style={{ color: "#03304c" }}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 transition-transform duration-300 rotate-90" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 transition-transform duration-300" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Glass Sidebar */}
+      {/* Enhanced Mobile Glass Sidebar */}
       {isMenuOpen && (
         <>
-          {/* Backdrop */}
+          {/* Enhanced Backdrop with Blur */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            className="fixed inset-0 glass-backdrop z-40 md:hidden transition-all duration-500"
             onClick={closeMenu}
+            style={{
+              background: "rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(20px)",
+            }}
           />
 
-          {/* Glass Sidebar */}
-          <div className="fixed top-0 right-0 h-full w-80 z-50 md:hidden">
+          {/* Background Blur Overlay */}
+          <div
+            className="fixed inset-0 z-45 md:hidden transition-all duration-500 ease-out"
+            style={{
+              backdropFilter: isMenuOpen ? "blur(30px)" : "blur(0px)",
+              background: isMenuOpen
+                ? "rgba(0, 0, 0, 0.15)"
+                : "rgba(0, 0, 0, 0)",
+              opacity: isMenuOpen ? 1 : 0,
+              transform: isMenuOpen ? "scale(1)" : "scale(0.98)",
+            }}
+          />
+
+          {/* Targeted Sidebar Area Blur */}
+          <div
+            className={`fixed top-0 right-0 h-full w-80 z-40 md:hidden transition-all duration-500 ease-out ${
+              isMenuOpen ? "sidebar-blur-area" : ""
+            }`}
+            style={{
+              opacity: isMenuOpen ? 1 : 0,
+              transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+            }}
+          />
+
+          {/* Extended Blur Area */}
+          <div
+            className={`fixed top-0 right-80 h-full w-40 z-40 md:hidden transition-all duration-500 ease-out ${
+              isMenuOpen ? "sidebar-blur-fade" : ""
+            }`}
+            style={{
+              opacity: isMenuOpen ? 1 : 0,
+              transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+            }}
+          />
+
+          {/* Page Content Blur Effect */}
+          <div
+            className="fixed inset-0 z-35 md:hidden pointer-events-none transition-all duration-500 ease-out"
+            style={{
+              backdropFilter: isMenuOpen ? "blur(15px)" : "blur(0px)",
+              opacity: isMenuOpen ? 1 : 0,
+            }}
+          />
+
+          {/* Enhanced Glass Sidebar with Slide Animation */}
+          <div
+            className="fixed top-0 right-0 h-full w-80 z-50 md:hidden transform transition-all duration-500 ease-out"
+            style={{
+              transform: isMenuOpen ? "translateX(0)" : "translateX(100%)",
+            }}
+          >
             <div
-              className="h-full w-full backdrop-blur-md bg-white/20 border-l border-white/30 shadow-2xl"
+              className="h-full w-full glass-sidebar"
               style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+                background: `
+                  linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.08) 0%, 
+                    rgba(255, 255, 255, 0.06) 25%, 
+                    rgba(255, 255, 255, 0.04) 50%, 
+                    rgba(255, 255, 255, 0.02) 100%
+                  ),
+                  linear-gradient(45deg, 
+                    rgba(255, 255, 255, 0.06) 0%, 
+                    rgba(255, 255, 255, 0.03) 100%
+                  )
+                `,
+                borderLeft: "1px solid rgba(255, 255, 255, 0.25)",
+                boxShadow: `
+                  0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.1)
+                `,
               }}
             >
               <div className="flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-white/20">
+                {/* Enhanced Header */}
+                <div className="flex items-center justify-between p-6 border-b border-white/30 glass-hover">
                   <div
                     className="text-xl font-bold"
                     style={{ color: "#03304c" }}
@@ -147,32 +223,39 @@ export default function Header() {
                   </div>
                   <button
                     onClick={closeMenu}
-                    className="p-2 rounded-lg transition-colors"
+                    className="p-2 rounded-lg glass-hover hover:scale-110"
                     style={{ color: "#03304c" }}
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                {/* Navigation Items */}
+                {/* Enhanced Navigation Items */}
                 <nav className="flex-1 p-6">
                   <div className="space-y-6">
-                    {navItems.map((item) => (
+                    {navItems.map((item, index) => (
                       <a
                         key={item.href}
                         href={item.href}
                         onClick={closeMenu}
-                        className="block text-lg font-medium transition-all duration-300 hover:translate-x-2"
-                        style={{ color: "#03304c" }}
+                        className="block text-lg font-medium transition-all duration-500 hover:translate-x-3 hover:scale-105 relative overflow-hidden group"
+                        style={{
+                          color: "#03304c",
+                          animationDelay: `${index * 100}ms`,
+                          animation: "slideInRight 0.5s ease-out forwards",
+                        }}
                       >
-                        {item.label}
+                        <span className="relative z-10 group-hover:text-[#03304c] transition-all duration-300">
+                          {item.label}
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
                       </a>
                     ))}
                   </div>
                 </nav>
 
-                {/* Footer */}
-                <div className="p-6 border-t border-white/20">
+                {/* Enhanced Footer */}
+                <div className="p-6 border-t border-white/30 glass-hover">
                   <div
                     className="text-sm opacity-70"
                     style={{ color: "#03304c" }}
@@ -185,6 +268,19 @@ export default function Header() {
           </div>
         </>
       )}
+
+      <style jsx>{`
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </header>
   );
 }

@@ -8,7 +8,7 @@ interface Event {
   title: string;
   month: string;
   day: string;
-  mainTitle: string | { line1: string; line2: string };
+  mainTitle: string;
   description: string;
   descriptionEn: string;
   dayOfWeek: string;
@@ -23,7 +23,7 @@ interface Event {
 
 export default function EventAnnouncement() {
   return (
-    <div className="w-full py-4 px-8">
+    <div className="w-full">
       <div className="flex flex-col">
         {eventsData.map((event: Event) => (
           <Card
@@ -35,9 +35,7 @@ export default function EventAnnouncement() {
 
             {/* Title section */}
             <div className="text-center py-4">
-              <h2 className={`text-xl font-bold ${event.accentColor}`}>
-                {event.title}
-              </h2>
+              <h2 className={`text-xl font-bold ${event.accentColor}`}></h2>
             </div>
 
             {/* Main content area */}
@@ -51,16 +49,9 @@ export default function EventAnnouncement() {
 
                 {/* Center - Main title */}
                 <div className="text-center">
-                  {typeof event.mainTitle === "string" ? (
-                    <div className="text-2xl font-bold leading-tight">
-                      {event.mainTitle}
-                    </div>
-                  ) : (
-                    <div className="text-2xl font-bold leading-tight">
-                      <div>{event.mainTitle.line1}</div>
-                      <div>{event.mainTitle.line2}</div>
-                    </div>
-                  )}
+                  <div className="text-2xl font-bold leading-tight">
+                    {event.mainTitle}
+                  </div>
                 </div>
 
                 {/* Right side - Description */}

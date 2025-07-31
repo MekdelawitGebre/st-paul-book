@@ -12,7 +12,7 @@
     "time": "01:00",
     "location": "አድራሻ ቦታ",
     "locationEn": "Address/Location",
-    "backgroundColor": "bg-blue-900",
+    "backgroundColor": "bg-[#03304c]",
     "textColor": "text-white",
     "accentColor": "text-cyan-400"
   },
@@ -23,12 +23,7 @@
     "month": "ጥቅምት",
     "monthEn": "October",
     "day": "15",
-    "mainTitle": {
-      "line1": "የመጽሐፍ",
-      "line1En": "Yemets'haf",
-      "line2": "ምርቃት",
-      "line2En": "Mirk'at"
-    },
+    "mainTitle": "የመጽሐፍ ምርቃት",
     "description": "በቅዱስ ዮሐንስ ወንጌል ላይ የተመሰረተ የሃይማኖት መጽሐፍ ለማሰራጨት የተዘጋጀ ስነ ጽሑፍ",
     "descriptionEn": "Religious literature prepared for distribution based on the Gospel of Saint John.",
     "dayOfWeek": "እሁድ",
@@ -36,7 +31,7 @@
     "time": "02:30",
     "location": "አድራሻ ቦታ",
     "locationEn": "Address/Location",
-    "backgroundColor": "bg-blue-900",
+    "backgroundColor": "bg-[#03304c]",
     "textColor": "text-white",
     "accentColor": "text-cyan-400"
   }
