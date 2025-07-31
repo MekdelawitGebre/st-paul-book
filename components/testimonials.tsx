@@ -45,21 +45,24 @@ export default function Testimonials() {
             className="flex transition-transform duration-500 ease-in-out"
             style={{
               transform: `translateX(-${
-                Math.max(0, currentSlide - 1) * 33.333
+                currentSlide * (window.innerWidth >= 768 ? 33.333 : 100)
               }%)`,
             }}
           >
             {testimonialsData.testimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className="w-1/3 flex-shrink-0 px-4">
+              <div
+                key={testimonial.id}
+                className="w-full md:w-1/3 flex-shrink-0 px-4"
+              >
                 <Card
                   className={`bg-gray-100 transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg ${
                     currentSlide === index
                       ? "transform rotate-0 scale-100 blur-0 opacity-100"
                       : index === currentSlide - 1
-                      ? "transform -rotate-12 scale-75 blur-sm opacity-50"
+                      ? "transform -rotate-12 scale-75 blur-sm opacity-50 md:block hidden"
                       : index === currentSlide + 1
-                      ? "transform rotate-12 scale-75 blur-sm opacity-50"
-                      : "transform rotate-0 scale-75 blur-sm opacity-30"
+                      ? "transform rotate-12 scale-75 blur-sm opacity-50 md:block hidden"
+                      : "transform rotate-0 scale-75 blur-sm opacity-30 md:block hidden"
                   }`}
                 >
                   <CardContent className="p-6">
@@ -69,7 +72,7 @@ export default function Testimonials() {
                         style={{ color: "#03304c" }}
                       />
                     </div>
-                    <p className="text-base leading-relaxed mb-1 text-gray-700">
+                    <p className="text-base leading-relaxed mb-4 text-gray-700 text-justify px-4">
                       {testimonial.quote}
                     </p>
                     <div className="text-4xl text-gray-300 flex justify-end">

@@ -2,10 +2,11 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Quote, QuoteIcon } from "lucide-react";
 import quotesData from "@/data/quotes.json";
 
 export default function Quotes() {
-  const [currentQuoteSlide, setCurrentQuoteSlide] = React.useState(0);
+  const [currentQuoteSlide, setCurrentQuoteSlide] = React.useState(1);
   const totalQuoteSlides = quotesData.quotes.length;
 
   const nextQuoteSlide = () => {
@@ -65,23 +66,23 @@ export default function Quotes() {
                 <Card
                   className={`transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg cursor-pointer hover:scale-105 ${
                     currentQuoteSlide === index
-                      ? "bg-[#0a2233] text-white transform rotate-0 scale-100 opacity-100"
-                      : "bg-white text-gray-800 transform rotate-0 scale-75 opacity-70"
+                      ? "bg-[#03304c] text-white transform rotate-0 scale-100 opacity-100 z-20"
+                      : "bg-white text-gray-800 transform rotate-0 scale-75 opacity-70 z-10"
                   }`}
                   onClick={() => goToQuoteSlide(index)}
                 >
                   <CardContent className="p-6">
-                    <div
-                      className={`text-6xl mb-1 font-serif italic ${
-                        currentQuoteSlide === index
-                          ? "text-gray-300"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      "
+                    <div className="text-4xl text-gray-300 flex items-start mb-2">
+                      <QuoteIcon
+                        className="text-4xl"
+                        style={{
+                          color:
+                            currentQuoteSlide === index ? "#ffffff" : "#9ca3af",
+                        }}
+                      />
                     </div>
                     <p
-                      className={`text-lg leading-relaxed mb-1 ${
+                      className={`text-lg leading-relaxed mb-4 ${
                         currentQuoteSlide === index
                           ? "text-white"
                           : "text-gray-800"
@@ -89,14 +90,8 @@ export default function Quotes() {
                     >
                       {quote.quote}
                     </p>
-                    <div
-                      className={`text-6xl mb-4 text-right font-serif italic ${
-                        currentQuoteSlide === index
-                          ? "text-gray-300"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      "
+                    <div className="text-4xl text-gray-300 flex justify-end mb-2">
+                      <Quote className="text-4xl text-gray-300" />
                     </div>
                     <div className="text-right">
                       <p
