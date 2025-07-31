@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "title": "መርኃ ግብራት",
+    "title": "መርሐ ግብራት",
     "month": "ነሐሴ",
     "day": "6",
-    "mainTitle": "የመጽሐፍ",
-    "description": "ብጹዓን አበው ሊቃነ ጳጳሳትና ታላለቅ መምህራን በተገኙበት ቅዱስ ጳውሎስ በሚል ርዕስ የተዘጋጀው ይህ መጽሐፍ የሚመረቅ ይሆናል",
+    "mainTitle": "የመጽሐፍ ምርቃት",
+    "description": "ብጹዓን አበው ሊቃነ ጳጳሳትና ታላለቅ መምህራን በተገኙበት ቅዱስ ጳውሎስ በሚል ርዕስ የተዘጋጀው ይህ መጽሐፍ የሚመረቅ ይሆናልል",
     "descriptionEn": "This book, prepared under the title 'Saint Paul,' will be launched/dedicated in the presence of blessed fathers, bishops, and great teachers.",
     "dayOfWeek": "ቅዳሜ",
     "dayOfWeekEn": "Saturday",
@@ -15,24 +15,6 @@
     "backgroundColor": "bg-[#03304c]",
     "textColor": "text-white",
     "accentColor": "text-cyan-400"
-  },
-  {
-    "id": 2,
-    "title": "መርኃግብራት",
-    "subtitle": "Merhagebrate",
-    "month": "ጥቅምት",
-    "monthEn": "October",
-    "day": "15",
-    "mainTitle": "የመጽሐፍ ምርቃት",
-    "description": "በቅዱስ ዮሐንስ ወንጌል ላይ የተመሰረተ የሃይማኖት መጽሐፍ ለማሰራጨት የተዘጋጀ ስነ ጽሑፍ",
-    "descriptionEn": "Religious literature prepared for distribution based on the Gospel of Saint John.",
-    "dayOfWeek": "እሁድ",
-    "dayOfWeekEn": "Sunday",
-    "time": "02:30",
-    "location": "አድራሻ ቦታ",
-    "locationEn": "Address/Location",
-    "backgroundColor": "bg-[#03304c]",
-    "textColor": "text-white",
-    "accentColor": "text-cyan-400"
   }
+  
 ]
