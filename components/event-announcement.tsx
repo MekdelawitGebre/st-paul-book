@@ -26,52 +26,49 @@ export default function EventAnnouncement() {
     <div className="w-full">
       <div className="flex flex-col w-full">
         {eventsData.map((event: Event) => (
-          <Card
-            key={event.id}
-            className={`${event.backgroundColor} ${event.textColor} overflow-hidden w-full rounded-none border-0 shadow-none`}
-            style={{ margin: 0, padding: 0, height: "275px" }}
-          >
-            <div className="h-1 bg-black"></div>
+          <div key={event.id} className="w-full">
+          
 
-            {/* Title section */}
-            <div className="text-center py-4">
-              <h2 className={`text-xl font-bold ${event.accentColor}`}></h2>
-            </div>
+            {/* Main card */}
+            <Card
+              className={`${event.backgroundColor} ${event.textColor} overflow-hidden w-full rounded-none border-0 shadow-none`}
+              style={{ margin: 0, padding: "0", height: "275px" }}
+            >
+              {/* Main content area */}
+              <div className="p-6 h-full flex flex-col">
+                <div className="grid grid-cols-3 gap-6 items-start flex-1">
+                  {/* Left side - Month and Day */}
+                  <div className="text-left">
+                    <div className="text-2xl font-thin opacity-80">
+                      {event.month}
+                    </div>
+                    <div className="text-8xl font-medium">{event.day}</div>
+                  </div>
 
-            {/* Main content area */}
-            <div className="p-4">
-              <div className="grid grid-cols-3 gap-4 items-start">
-                {/* Left side - Month and Day */}
-                <div className="text-left">
-                  <div className="text-sm opacity-80">{event.month}</div>
-                  <div className="text-4xl font-bold mt-1">{event.day}</div>
-                </div>
+                  {/* Center - Main title */}
+                  <div className="text-center flex items-center">
+                    <div className="text-6xl font-bold leading-tight">
+                      {event.mainTitle}
+                    </div>
+                  </div>
 
-                {/* Center - Main title */}
-                <div className="text-center">
-                  <div className="text-2xl font-bold leading-tight">
-                    {event.mainTitle}
+                  {/* Right side - Description */}
+                  <div className="text-right text-sm leading-relaxed flex items-center">
+                    {event.description}
                   </div>
                 </div>
 
-                {/* Right side - Description */}
-                <div className="text-right text-sm leading-relaxed">
-                  {event.description}
+                {/* Bottom section */}
+                <div className="flex justify-between items-center mt-auto">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">{event.dayOfWeek}</span>
+                    <span className="text-sm">{event.time}</span>
+                  </div>
+                  <div className="text-sm">{event.location}</div>
                 </div>
               </div>
-            </div>
-
-            {/* Bottom section */}
-            <div className="px-4 pb-0">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm">{event.dayOfWeek}</span>
-                  <span className="text-sm">{event.time}</span>
-                </div>
-                <div className="text-sm">{event.location}</div>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         ))}
       </div>
     </div>
