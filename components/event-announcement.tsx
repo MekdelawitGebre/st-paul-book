@@ -59,13 +59,12 @@ export default function EventAnnouncement() {
                 {/* Bottom section */}
                 <div className="grid grid-cols-3 gap-6 items-center mt-auto">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">{event.dayOfWeek}</span>
-                    <span className="text-sm">{event.time}</span>
+                    <span className="text-medium">{event.dayOfWeek}</span>
                   </div>
                   <div className="text-center">
-                    {/* Empty center column to maintain grid alignment */}
+                    <span className="text-medium">{event.time}</span>
                   </div>
-                  <div className="text-sm text-left flex items-center">
+                  <div className="text-sm font-bold text-left flex items-center">
                     <div className="pr-8">{event.location}</div>
                   </div>
                 </div>
