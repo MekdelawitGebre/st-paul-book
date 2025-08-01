@@ -64,8 +64,8 @@ export default function ReaderTestimonials() {
                         isActive
                           ? "bg-white text-gray-800 transform rotate-0 scale-100 opacity-100 z-20"
                           : isLeft || isRight
-                          ? "bg-[#032f4b] text-white transform rotate-0 scale-75 opacity-70 z-10"
-                          : "bg-[#032f4b] text-white transform rotate-0 scale-75 opacity-70 z-10 md:block hidden"
+                          ? "bg-[#03304c] text-white transform rotate-0 scale-75 opacity-70 z-10"
+                          : "bg-[#03304c] text-white transform rotate-0 scale-75 opacity-70 z-10 md:block hidden"
                       }`}
                       onClick={() => goToSlide(index)}
                     >

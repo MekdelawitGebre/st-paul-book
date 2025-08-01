@@ -24,13 +24,13 @@ interface Event {
 export default function EventAnnouncement() {
   return (
     <div className="w-full">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         {eventsData.map((event: Event) => (
           <Card
             key={event.id}
-            className={`${event.backgroundColor} ${event.textColor} overflow-hidden`}
+            className={`${event.backgroundColor} ${event.textColor} overflow-hidden w-full rounded-none border-0 shadow-none`}
+            style={{ margin: 0, padding: 0, height: "275px" }}
           >
-            {/* Top black bar */}
             <div className="h-1 bg-black"></div>
 
             {/* Title section */}
@@ -62,7 +62,7 @@ export default function EventAnnouncement() {
             </div>
 
             {/* Bottom section */}
-            <div className="px-4 pb-4">
+            <div className="px-4 pb-0">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{event.dayOfWeek}</span>

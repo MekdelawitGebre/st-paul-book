@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ቅዱስ ጳውሎስ",
-  description: "የቅዱስ ጳውሎስን ስራ እና ህይወት የምናወሳበት መጽሐፍ ነው",
+  description: "የቅዱስ ጳውሎስን ስራ እና ህይወት የምናወሳበት መጽሐፍ ነው::",
 };
 
 export default function RootLayout({

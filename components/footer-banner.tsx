@@ -6,7 +6,7 @@ export default function FooterBanner() {
   return (
     <div className="w-full bg-gray-100 py-4 px-8">
       <div className="flex items-center justify-between">
-        {/* Left Section - Author Name */}
+        
         <div className="flex-1">
           <h3
             className="text-blue-900 font-bold text-lg

@@ -6,13 +6,13 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-20"
+      className="pt-20 pb-0"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
+        minHeight: "auto",
       }}
     >
       <div className="container mx-auto px-8">
@@ -21,8 +21,8 @@ export default function Programs() {
             መርሐ ግብራት
           </h2>
         </div>
-        <EventAnnouncement />
       </div>
+      <EventAnnouncement />
     </section>
   );
 }

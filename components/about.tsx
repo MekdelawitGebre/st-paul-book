@@ -23,7 +23,7 @@ export default function About() {
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Image - Shows first on mobile */}
+          
           <div className="order-1 md:order-2 p-2 rounded-2xl text-center">
             <Image
               src="/book.png"
@@ -34,7 +34,7 @@ export default function About() {
             />
           </div>
 
-          {/* Text - Shows second on mobile */}
+          
           <div className="order-2 md:order-1">
             <h6
               className="text-4xl font-light mb-8"
