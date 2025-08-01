@@ -6,20 +6,230 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Quote, QuoteIcon } from "lucide-react";
 import testimonialsData from "@/data/testimonials.json";
 
+// Type definitions
+interface TestimonialCardProps {
+  testimonial: any;
+  isActive: boolean;
+  isPrevious: boolean;
+  isNext: boolean;
+}
+
+interface NavigationButtonProps {
+  onClick: () => void;
+  direction: "left" | "right";
+  className: string;
+}
+
+interface SlideIndicatorProps {
+  index: number;
+  isActive: boolean;
+  onClick: (index: number) => void;
+}
+
+// Reusable card component
+const TestimonialCard = ({
+  testimonial,
+  isActive,
+  isPrevious,
+  isNext,
+}: TestimonialCardProps) => {
+  // Unified styling configuration for exact image effect
+  const cardConfig = {
+    active: {
+      width: "380px",
+      transform: "translateX(0) scale(1.05) rotate(0deg)",
+      className: "scale-105 opacity-100 z-20",
+      cardClasses: "border border-gray-200 shadow-xl",
+      contentOpacity: "opacity-100",
+      textBlur: "blur-0",
+    },
+    previous: {
+      width: "260px",
+      transform: "translateX(-60px) scale(0.9) rotate(-6deg)",
+      className: "scale-90 opacity-60 z-10",
+      cardClasses: "border border-gray-200 shadow-sm",
+      contentOpacity: "opacity-60",
+      textBlur: "blur-sm",
+    },
+    next: {
+      width: "260px",
+      transform: "translateX(60px) scale(0.9) rotate(6deg)",
+      className: "scale-90 opacity-60 z-10",
+      cardClasses: "border border-gray-200 shadow-sm",
+      contentOpacity: "opacity-60",
+      textBlur: "blur-sm",
+    },
+  };
+
+  // Determine card type and get configuration
+  const getCardType = () => {
+    if (isActive) return "active";
+    if (isPrevious) return "previous";
+    if (isNext) return "next";
+    return "previous"; // fallback
+  };
+
+  const cardType = getCardType();
+  const config = cardConfig[cardType];
+
+  const baseStyles = "transition-all duration-700 ease-in-out transform";
+  const baseCardClasses =
+    "bg-white rounded-lg transition-all duration-700 ease-in-out";
+
+  return (
+    <div
+      key={testimonial.id}
+      className={`${baseStyles} ${config.className}`}
+      style={{
+        width: config.width,
+        transform: config.transform,
+      }}
+    >
+      <Card className={`${baseCardClasses} ${config.cardClasses}`}>
+        <CardContent className="p-4 sm:p-5 transition-all duration-500">
+          {/* Quote Icon */}
+          <div
+            className={`text-2xl sm:text-3xl text-gray-400 flex items-start transition-all duration-300 ${config.contentOpacity}`}
+          >
+            <QuoteIcon
+              className="text-2xl sm:text-3xl transition-all duration-300"
+              style={{ color: "#9ca3af" }}
+            />
+          </div>
+
+          {/* Quote Text - Only this gets blurred */}
+          <p
+            className={`text-xs sm:text-sm leading-relaxed mb-3 text-gray-600 text-justify px-2 sm:px-3 transition-all duration-300 ${config.contentOpacity} ${config.textBlur}`}
+          >
+            {testimonial.quote}
+          </p>
+
+          {/* Closing Quote */}
+          <div
+            className={`text-2xl sm:text-3xl text-gray-400 flex justify-end transition-all duration-300 ${config.contentOpacity}`}
+          >
+            <Quote className="text-2xl sm:text-3xl text-gray-400 transition-all duration-300" />
+          </div>
+
+          {/* Author Section */}
+          <div
+            className={`flex flex-col items-center text-center transition-all duration-500 ${config.contentOpacity}`}
+          >
+            {testimonial.author.image ? (
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-sm overflow-hidden flex items-center justify-center transition-all duration-300">
+                <Image
+                  src={testimonial.author.image}
+                  alt={testimonial.author.name}
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-cover transition-all duration-300"
+                />
+              </div>
+            ) : (
+              <div
+                className={`w-12 h-12 sm:w-14 sm:h-14 bg-${testimonial.author.avatarColor} rounded-full mb-2 shadow-sm flex items-center justify-center transition-all duration-300`}
+              >
+                <span className="text-white font-bold text-sm sm:text-base transition-all duration-300">
+                  {testimonial.author.avatar}
+                </span>
+              </div>
+            )}
+
+            <div className="mt-2 transition-all duration-300">
+              <p className="font-semibold text-gray-800 text-xs sm:text-sm transition-all duration-300">
+                {testimonial.author.name}
+              </p>
+              <p className="text-gray-500 text-xs transition-all duration-300">
+                {testimonial.author.title}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+// Reusable navigation button component
+const NavigationButton = ({
+  onClick,
+  direction,
+  className,
+}: NavigationButtonProps) => {
+  const Icon = direction === "left" ? ChevronLeft : ChevronRight;
+
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute ${className} top-1/2 transform -translate-y-1/2 text-gray-800 p-3 sm:p-4 rounded-full hover:bg-gray-200 transition-all duration-300 shadow-lg z-30 bg-white border-2 border-gray-300 hover:scale-110 hover:shadow-xl`}
+    >
+      <Icon className="w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300" />
+    </button>
+  );
+};
+
+// Reusable indicator component
+const SlideIndicator = ({ index, isActive, onClick }: SlideIndicatorProps) => (
+  <button
+    onClick={() => onClick(index)}
+    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+      isActive ? "bg-gray-600 scale-125" : "bg-gray-300 hover:bg-gray-400"
+    }`}
+  />
+);
+
 export default function Testimonials() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const totalSlides = testimonialsData.testimonials.length;
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => Math.min(prev + 1, totalSlides - 1));
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => Math.max(prev - 1, 0));
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  // Get visible cards with their positions
+  const getVisibleCards = () => {
+    const cards = [];
+
+    // Always show exactly 3 cards: previous, current, next
+    const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+    const nextIndex = (currentSlide + 1) % totalSlides;
+
+    // Add previous card
+    cards.push({
+      testimonial: testimonialsData.testimonials[prevIndex],
+      index: prevIndex,
+      isActive: false,
+      isPrevious: true,
+      isNext: false,
+    });
+
+    // Add current card
+    cards.push({
+      testimonial: testimonialsData.testimonials[currentSlide],
+      index: currentSlide,
+      isActive: true,
+      isPrevious: false,
+      isNext: false,
+    });
+
+    // Add next card
+    cards.push({
+      testimonial: testimonialsData.testimonials[nextIndex],
+      index: nextIndex,
+      isActive: false,
+      isPrevious: false,
+      isNext: true,
+    });
+
+    return cards;
   };
 
   return (
@@ -34,117 +244,52 @@ export default function Testimonials() {
         minHeight: "100vh",
       }}
     >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-4 sm:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: "#03304c" }}>
+          <h2
+            className="text-3xl sm:text-5xl font-bold mb-4"
+            style={{ color: "#03304c" }}
+          >
             የመምህራን አስተያየት
           </h2>
         </div>
+
         <div className="relative overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${
-                currentSlide *
-                (typeof window !== "undefined" && window.innerWidth >= 768
-                  ? 33.333
-                  : 100)
-              }%)`,
-            }}
-          >
-            {testimonialsData.testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className="w-full md:w-1/3 flex-shrink-0 px-4"
-              >
-                <Card
-                  className={`bg-gray-100 transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg ${
-                    currentSlide === index
-                      ? "transform rotate-0 scale-100 blur-0 opacity-100"
-                      : index === currentSlide - 1
-                      ? "transform -rotate-12 scale-75 blur-sm opacity-50 md:block hidden"
-                      : index === currentSlide + 1
-                      ? "transform rotate-12 scale-75 blur-sm opacity-50 md:block hidden"
-                      : "transform rotate-0 scale-75 blur-sm opacity-30 md:block hidden"
-                  }`}
-                >
-                  <CardContent className="p-6">
-                    <div className="text-4xl text-gray-300 flex items-start">
-                      <QuoteIcon
-                        className="text-4xl"
-                        style={{ color: "#03304c" }}
-                      />
-                    </div>
-                    <p className="text-base leading-relaxed mb-4 text-gray-700 text-justify px-4">
-                      {testimonial.quote}
-                    </p>
-                    <div className="text-4xl text-gray-300 flex justify-end">
-                      <Quote className="text-4xl text-gray-300" />
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      {testimonial.author.image ? (
-                        <div className="w-30 h-30 rounded-full shadow-lg overflow-hidden flex items-center justify-center">
-                          <Image
-                            src={testimonial.author.image}
-                            alt={testimonial.author.name}
-                            width={80}
-                            height={80}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={`w-20 h-20 bg-${testimonial.author.avatarColor} rounded-full mb-3 shadow-lg flex items-center justify-center`}
-                        >
-                          <span className="text-white font-bold text-xl">
-                            {testimonial.author.avatar}
-                          </span>
-                        </div>
-                      )}
-                      <div>
-                        <p className="font-bold text-gray-900 text-base">
-                          {testimonial.author.name}
-                        </p>
-                        <p className="text-gray-600 text-sm">
-                          {testimonial.author.title}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
+          {/* Main Carousel Container */}
+          <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center gap-2 sm:gap-4 transition-all duration-700 ease-in-out relative">
+              {getVisibleCards().map((cardData, positionIndex) => (
+                <TestimonialCard
+                  key={`${cardData.testimonial.id}-${cardData.index}-${positionIndex}`}
+                  testimonial={cardData.testimonial}
+                  isActive={cardData.isActive}
+                  isPrevious={cardData.isPrevious}
+                  isNext={cardData.isNext}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Navigation Arrows */}
-          <button
+          <NavigationButton
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
-            style={{ backgroundColor: "#D9D9D9" }}
-            disabled={currentSlide === 0}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
+            direction="left"
+            className="left-2 sm:left-4"
+          />
+          <NavigationButton
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
-            style={{ backgroundColor: "#D9D9D9" }}
-            disabled={currentSlide >= totalSlides - 1}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+            direction="right"
+            className="right-2 sm:right-4"
+          />
 
           {/* Slide Indicators */}
-          <div className="flex justify-center mt-4 space-x-2">
+          <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
             {testimonialsData.testimonials.map((_, index) => (
-              <button
+              <SlideIndicator
                 key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  currentSlide === index
-                    ? "bg-gray-800"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
+                index={index}
+                isActive={currentSlide === index}
+                onClick={goToSlide}
               />
             ))}
           </div>

@@ -34,7 +34,10 @@ export default function EventAnnouncement() {
             >
               {/* Main content area */}
               <div className="p-6 h-full flex flex-col">
-                <div className="grid grid-cols-3 gap-6 items-start flex-1">
+                <div
+                  className="grid grid-cols-3 items-start flex-1"
+                  style={{ gap: "24px" }}
+                >
                   {/* Left side - Month and Day */}
                   <div className="text-left">
                     <div className="text-2xl font-thin opacity-80">
@@ -57,7 +60,10 @@ export default function EventAnnouncement() {
                 </div>
 
                 {/* Bottom section */}
-                <div className="grid grid-cols-3 gap-6 items-center mt-auto">
+                <div
+                  className="grid grid-cols-3 items-center mt-4"
+                  style={{ gap: "24px" }}
+                >
                   <div className="flex items-center gap-2">
                     <span className="text-medium">{event.dayOfWeek}</span>
                   </div>
