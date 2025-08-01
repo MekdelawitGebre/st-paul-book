@@ -27,8 +27,6 @@ export default function EventAnnouncement() {
       <div className="flex flex-col w-full">
         {eventsData.map((event: Event) => (
           <div key={event.id} className="w-full">
-          
-
             {/* Main card */}
             <Card
               className={`${event.backgroundColor} ${event.textColor} overflow-hidden w-full rounded-none border-0 shadow-none`}
@@ -36,7 +34,7 @@ export default function EventAnnouncement() {
             >
               {/* Main content area */}
               <div className="p-6 h-full flex flex-col">
-                <div className="grid grid-cols-3 gap-6 items-start flex-1">
+                <div className="grid grid-cols-3 gap-8 items-start flex-1">
                   {/* Left side - Month and Day */}
                   <div className="text-left">
                     <div className="text-2xl font-thin opacity-80">
@@ -53,7 +51,7 @@ export default function EventAnnouncement() {
                   </div>
 
                   {/* Right side - Description */}
-                  <div className="text-right text-sm leading-relaxed flex items-center">
+                  <div className="text-left text-sm leading-relaxed flex items-center pr-8">
                     {event.description}
                   </div>
                 </div>
@@ -64,7 +62,7 @@ export default function EventAnnouncement() {
                     <span className="text-sm">{event.dayOfWeek}</span>
                     <span className="text-sm">{event.time}</span>
                   </div>
-                  <div className="text-sm">{event.location}</div>
+                  <div className="text-sm pr-8 text-left">{event.location}</div>
                 </div>
               </div>
             </Card>
