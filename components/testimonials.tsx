@@ -12,7 +12,7 @@ const cardConfig = {
     height: "500px",
     transform: "translateX(0) scale(1.05) rotate(0deg)",
     className: "scale-105 opacity-100 z-20",
-    cardClasses: "border border-gray-200 shadow-xl bg-white",
+    cardClasses: "border border-gray-200 shadow-xl",
     contentOpacity: "opacity-100",
     textBlur: "blur-0",
     fontSize: "text-xs",
@@ -20,9 +20,9 @@ const cardConfig = {
   previous: {
     width: "350px",
     height: "500px",
-    transform: "translateX(-300px) scale(0.9) rotate(-8deg)",
+    transform: "translateX(-355px) scale(0.9) rotate(-30deg)",
     className: "scale-90 opacity-60 z-10",
-    cardClasses: "border border-gray-200 shadow-sm bg-white",
+    cardClasses: "border border-gray-200 shadow-sm",
     contentOpacity: "opacity-60",
     textBlur: "blur-sm",
     fontSize: "text-xs",
@@ -30,9 +30,9 @@ const cardConfig = {
   next: {
     width: "350px",
     height: "500px",
-    transform: "translateX(300px) scale(0.9) rotate(8deg)",
+    transform: "translateX(355px) scale(0.9) rotate(30deg)",
     className: "scale-90 opacity-60 z-10",
-    cardClasses: "border border-gray-200 shadow-sm bg-white",
+    cardClasses: "border border-gray-200 shadow-sm",
     contentOpacity: "opacity-60",
     textBlur: "blur-sm",
     fontSize: "text-xs",
@@ -127,7 +127,10 @@ export default function Testimonials() {
                     transform: config.transform,
                   }}
                 >
-                  <Card className={`w-full h-full p-2 ${config.cardClasses}`}>
+                  <Card
+                    className={`w-full h-full p-2 ${config.cardClasses}`}
+                    style={{ backgroundColor: "#D9D9D9" }}
+                  >
                     <CardContent
                       className={`flex flex-col items-center justify-center text-center h-full ${config.contentOpacity} transition-all duration-700 px-4 py-2`}
                     >
