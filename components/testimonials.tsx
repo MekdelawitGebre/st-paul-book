@@ -143,7 +143,10 @@ export default function Testimonials() {
                         <div className="absolute top-0 left-0">
                           <Quote
                             className="w-6 h-6"
-                            style={{ color: "#002942" }}
+                            style={{
+                              color: "#002942",
+                              transform: "rotate(180deg)",
+                            }}
                           />
                         </div>
 
@@ -159,7 +162,7 @@ export default function Testimonials() {
                           {/* Closing quote after description */}
                           <div className="flex justify-end mt-4">
                             <Quote
-                              className="w-6 h-6 transform rotate-180"
+                              className="w-6 h-6 transform rotate-270"
                               style={{ color: "#002942" }}
                             />
                           </div>
