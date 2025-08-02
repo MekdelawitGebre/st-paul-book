@@ -12,7 +12,7 @@ const cardConfig = {
     height: "500px",
     transform: "translateX(0) scale(1.05) rotate(0deg)",
     className: "scale-105 opacity-100 z-20",
-    cardClasses: "border border-gray-200 shadow-xl",
+    cardClasses: "border border-gray-200 shadow-2xl",
     contentOpacity: "opacity-100",
     textBlur: "blur-0",
     fontSize: "text-xs",
@@ -22,7 +22,7 @@ const cardConfig = {
     height: "500px",
     transform: "translateX(-355px) scale(0.9) rotate(-30deg)",
     className: "scale-90 opacity-60 z-10",
-    cardClasses: "border border-gray-200 shadow-sm",
+    cardClasses: "border border-gray-200 shadow-lg",
     contentOpacity: "opacity-60",
     textBlur: "blur-sm",
     fontSize: "text-xs",
@@ -32,7 +32,7 @@ const cardConfig = {
     height: "500px",
     transform: "translateX(355px) scale(0.9) rotate(30deg)",
     className: "scale-90 opacity-60 z-10",
-    cardClasses: "border border-gray-200 shadow-sm",
+    cardClasses: "border border-gray-200 shadow-lg",
     contentOpacity: "opacity-60",
     textBlur: "blur-sm",
     fontSize: "text-xs",
@@ -128,7 +128,7 @@ export default function Testimonials() {
                   }}
                 >
                   <Card
-                    className={`w-full h-full p-2 ${config.cardClasses}`}
+                    className={`w-full h-full p-2 ${config.cardClasses} shadow-2xl`}
                     style={{ backgroundColor: "#D9D9D9" }}
                   >
                     <CardContent
@@ -137,20 +137,27 @@ export default function Testimonials() {
                       <div className="relative w-full h-full flex flex-col">
                         {/* Opening quote at top-left */}
                         <div className="absolute top-0 left-0">
-                          <Quote className="w-6 h-6 text-gray-400" />
+                          <Quote
+                            className="w-6 h-6"
+                            style={{ color: "#002942" }}
+                          />
                         </div>
 
                         {/* Main content */}
                         <div className="flex-1 flex flex-col justify-center px-4 pt-8">
                           <p
                             className={`${config.fontSize} ${config.textBlur} text-justify`}
+                            style={{ color: "#002942" }}
                           >
                             {testimonial.quote}
                           </p>
 
                           {/* Closing quote after description */}
                           <div className="flex justify-end mt-4">
-                            <Quote className="w-6 h-6 text-gray-400 transform rotate-180" />
+                            <Quote
+                              className="w-6 h-6 transform rotate-180"
+                              style={{ color: "#002942" }}
+                            />
                           </div>
                         </div>
 
@@ -165,11 +172,12 @@ export default function Testimonials() {
                           />
                           <div className="text-center">
                             <p
-                              className={`font-semibold text-gray-800 text-sm`}
+                              className={`font-semibold text-sm`}
+                              style={{ color: "#002942" }}
                             >
                               {testimonial.author.name}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs" style={{ color: "#002942" }}>
                               {testimonial.author.title}
                             </p>
                           </div>
