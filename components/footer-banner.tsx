@@ -4,12 +4,12 @@ import { Mail, Facebook, Instagram, MessageSquare } from "lucide-react";
 
 export default function FooterBanner() {
   return (
-    <div className="w-full bg-gray-100 py-4 px-2 sm:px-6 md:px-8">
+    <div className="w-full bg-gray-100 py-4 px-1 sm:px-6 md:px-8">
       {/* Desktop Layout */}
       <div className="hidden lg:flex items-center justify-between">
         <div className="flex-1">
           <h3
-            className="text-blue-900 font-bold text-lg"
+            className="text-blue-800 font-bold text-lg"
             style={{
               color: "#03304c",
               fontFamily:
@@ -30,7 +30,7 @@ export default function FooterBanner() {
           </a>
           <a
             href="#author"
-            className="text-[10px] text-blue-900 hover:text-blue-700 transition-colors duration-300"
+            className="text-[10px] text-blue-900 hover:text-blue-900 transition-colors duration-300"
           >
             ደራሲው
           </a>
@@ -128,7 +128,7 @@ export default function FooterBanner() {
         </div>
 
         {/* Social Media Icons below */}
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-4 ml-12">
           <a
             href="mailto:selam@dnabel.com"
             className="w-8 h-8 border-2 border-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition-all duration-300"
@@ -149,7 +149,7 @@ export default function FooterBanner() {
             href="https://www.instagram.com/st.paul_book/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-8 h-8 border-2 border-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition-all duration-300"
+            className="w-8 h-8 border-2 border-blue-900 rounded-full flex items-center justify-center hover:bg-blue-800 hover:text-white transition-all duration-300"
             title="Instagram"
           >
             <Instagram className="w-4 h-4" />
@@ -158,7 +158,7 @@ export default function FooterBanner() {
             href="https://t.me/Dnabel"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-8 h-8 border-2 border-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition-all duration-300"
+            className="w-8 h-8 border-2 border-blue-900 rounded-full flex items-center justify-center hover:bg-blue-800 hover:text-white transition-all duration-300"
             title="Telegram"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
