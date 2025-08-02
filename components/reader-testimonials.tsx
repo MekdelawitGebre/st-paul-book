@@ -58,7 +58,7 @@ export default function ReaderQuotes() {
 
   return (
     <section
-      id="quotes"
+      id="readers-testimonials"
       className="py-10 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",

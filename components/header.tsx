@@ -51,7 +51,7 @@ export default function Header() {
     { href: "#author", label: "ደራሲው", id: "author" },
     { href: "#testimonials", label: "መምሕራን", id: "testimonials" },
     { href: "#quotes", label: "ጥቅሶች", id: "quotes" },
-    { href: "#readers", label: "አንባብያን", id: "readers" },
+    { href: "#readers-testimonials", label: "አንባብያን", id: "readers" },
     { href: "#programs", label: "መርሐ ግብራት", id: "programs" },
   ];
 
