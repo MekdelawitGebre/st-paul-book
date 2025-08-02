@@ -13,7 +13,7 @@ const cardConfig = {
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
     contentOpacity: "opacity-100",
-    fontSize: "text-base",
+    fontSize: "text-sm sm:text-base", // Reduced font size on mobile here
     bg: "bg-[#03304c] text-white",
   },
   previous: {
@@ -22,7 +22,7 @@ const cardConfig = {
     transform: "translateX(-420px) scale(0.9)",
     className: "scale-90 opacity-60 z-10",
     contentOpacity: "opacity-60",
-    fontSize: "text-xs",
+    fontSize: "text-xs", // Small font for previous cards (can be changed to text-[10px] if smaller needed)
     bg: "bg-white text-gray-800",
   },
   next: {
@@ -72,9 +72,12 @@ export default function Quotes() {
       }}
     >
       <div className="absolute inset-0 z-[-1]" />
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: "#03304c" }}>
+          <h2
+            className="text-3xl sm:text-5xl font-bold mb-4" // Smaller font size on mobile
+            style={{ color: "#03304c" }}
+          >
             ጥቅሶች
           </h2>
         </div>
@@ -83,7 +86,7 @@ export default function Quotes() {
           {...handlers}
           className="relative flex items-center justify-center w-full h-[600px]"
         >
-          {/* Previous Arrow - Hidden on mobile */}
+          {/* Arrows for Desktop */}
           <button
             onClick={prevQuoteSlide}
             className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg z-30"
@@ -93,7 +96,6 @@ export default function Quotes() {
             <ChevronLeft size={24} />
           </button>
 
-          {/* Next Arrow - Hidden on mobile */}
           <button
             onClick={nextQuoteSlide}
             className="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg z-30"
@@ -124,7 +126,7 @@ export default function Quotes() {
               return (
                 <div
                   key={quote.id}
-                  className={`absolute transition-all duration-700 ease-in-out ${config.className}`}
+                  className={`absolute transition-all duration-700 ease-in-out px-6 sm:px-8 md:px-0 ${config.className}`}
                   style={{
                     width: config.width,
                     height: config.height,
@@ -138,7 +140,7 @@ export default function Quotes() {
                     aria-label={`Quote by ${quote.author.name}`}
                   >
                     <CardContent
-                      className={`flex flex-col justify-between h-full ${config.contentOpacity} transition-opacity duration-500`}
+                      className={`flex flex-col justify-between h-full px-4 py-6 sm:px-6 md:px-8 ${config.contentOpacity} transition-opacity duration-500`}
                     >
                       <div className="text-left">
                         <Quote className="w-6 h-6 transform rotate-180 m-4" />
@@ -169,7 +171,7 @@ export default function Quotes() {
           </div>
         </div>
 
-        {/* Indicators */}
+        {/* Dots / Indicators */}
         <div className="flex justify-center mt-8 space-x-3">
           {quotesData.quotes.map((_, index) => (
             <button
