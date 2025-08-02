@@ -63,7 +63,7 @@ export default function Quotes() {
   return (
     <section
       id="quotes"
-      className="py-20 relative overflow-hidden"
+      className="py-10 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
@@ -75,7 +75,7 @@ export default function Quotes() {
       <div className="container mx-auto px-2 sm:px-6">
         <div className="text-center mb-8">
           <h2
-            className="text-3xl sm:text-5xl font-bold mb-4"
+            className="text-5xl sm:text-5xl font-bold mb-4"
             style={{ color: "#03304c" }}
           >
             ጥቅሶች

@@ -59,7 +59,7 @@ export default function ReaderQuotes() {
   return (
     <section
       id="quotes"
-      className="py-20 relative overflow-hidden"
+      className="py-10 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
@@ -67,9 +67,9 @@ export default function ReaderQuotes() {
         minHeight: "100vh",
       }}
     >
-      <div className="container mx-auto px-2 sm:px-6 md:px-8">
+      <div className="container mx-auto px-2 sm:px-4 md:px-6">
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#03304c]">
+          <h2 className="text-5xl md:text-5xl font-bold mb-1 text-[#03304c]">
             የአንባብያን አስተያየት
           </h2>
         </div>

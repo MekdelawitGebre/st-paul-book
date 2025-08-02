@@ -68,7 +68,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20 relative overflow-hidden"
+      className="py-10 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
