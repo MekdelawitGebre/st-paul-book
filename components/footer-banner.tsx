@@ -24,7 +24,7 @@ export default function FooterBanner() {
         {/* Center Section - Navigation Links */}
         <div className="flex-1 flex justify-center space-x-8">
           <a
-            href="##about"
+            href="#about"
             className="text-[10px] text-blue-900 hover:text-blue-700 transition-colors duration-300"
           >
             ነገረ መጽሐፍ
