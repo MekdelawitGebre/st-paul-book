@@ -8,26 +8,26 @@ import quotesData from "@/data/quotes.json";
 
 const cardConfig = {
   active: {
-    width: "450px",
-    height: "500px",
+    width: "w-[90vw] sm:w-[420px] md:w-[450px]",
+    height: "h-[550px]",
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
     contentOpacity: "opacity-100",
-    fontSize: "text-sm sm:text-base", // Reduced font size on mobile here
+    fontSize: "text-xs sm:text-sm md:text-base", // smaller font for mobile
     bg: "bg-[#03304c] text-white",
   },
   previous: {
-    width: "300px",
-    height: "500px",
+    width: "w-[300px]",
+    height: "h-[550px]",
     transform: "translateX(-420px) scale(0.9)",
     className: "scale-90 opacity-60 z-10",
     contentOpacity: "opacity-60",
-    fontSize: "text-xs", // Small font for previous cards (can be changed to text-[10px] if smaller needed)
+    fontSize: "text-xs",
     bg: "bg-white text-gray-800",
   },
   next: {
-    width: "300px",
-    height: "500px",
+    width: "w-[300px]",
+    height: "h-[550px]",
     transform: "translateX(420px) scale(0.9)",
     className: "scale-90 opacity-60 z-10",
     contentOpacity: "opacity-60",
@@ -75,7 +75,7 @@ export default function Quotes() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
           <h2
-            className="text-3xl sm:text-5xl font-bold mb-4" // Smaller font size on mobile
+            className="text-3xl sm:text-5xl font-bold mb-4"
             style={{ color: "#03304c" }}
           >
             ጥቅሶች
@@ -126,10 +126,8 @@ export default function Quotes() {
               return (
                 <div
                   key={quote.id}
-                  className={`absolute transition-all duration-700 ease-in-out px-6 sm:px-8 md:px-0 ${config.className}`}
+                  className={`absolute transition-all duration-700 ease-in-out px-6 sm:px-10 md:px-0 ${config.className} ${config.width} ${config.height}`}
                   style={{
-                    width: config.width,
-                    height: config.height,
                     transform: config.transform,
                   }}
                 >
