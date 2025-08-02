@@ -4,37 +4,38 @@ import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useSwipeable } from "react-swipeable";
 import testimonialsData from "@/data/testimonials.json";
 
-  const cardConfig = {
-    active: {
+const cardConfig = {
+  active: {
     width: "350px",
     height: "500px",
-      transform: "translateX(0) scale(1.05) rotate(0deg)",
-      className: "scale-105 opacity-100 z-20",
+    transform: "translateX(0) scale(1.05) rotate(0deg)",
+    className: "scale-105 opacity-100 z-20",
     cardClasses: "border border-gray-200",
-      contentOpacity: "opacity-100",
-      textBlur: "blur-0",
+    contentOpacity: "opacity-100",
+    textBlur: "blur-0",
     fontSize: "text-xs",
-    },
-    previous: {
+  },
+  previous: {
     width: "350px",
     height: "500px",
     transform: "translateX(-355px) scale(0.9) rotate(-30deg)",
-      className: "scale-90 opacity-60 z-10",
+    className: "scale-90 opacity-60 z-10",
     cardClasses: "border border-gray-200",
-      contentOpacity: "opacity-60",
-      textBlur: "blur-sm",
+    contentOpacity: "opacity-60",
+    textBlur: "blur-sm",
     fontSize: "text-xs",
-    },
-    next: {
+  },
+  next: {
     width: "350px",
     height: "500px",
     transform: "translateX(355px) scale(0.9) rotate(30deg)",
-      className: "scale-90 opacity-60 z-10",
+    className: "scale-90 opacity-60 z-10",
     cardClasses: "border border-gray-200",
-      contentOpacity: "opacity-60",
-      textBlur: "blur-sm",
+    contentOpacity: "opacity-60",
+    textBlur: "blur-sm",
     fontSize: "text-xs",
   },
 };
@@ -52,6 +53,14 @@ export default function Testimonials() {
       prev === 0 ? totalSlides - 1 : (prev - 1 + totalSlides) % totalSlides
     );
   };
+
+  // Swipe handlers using react-swipeable
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrevious(),
+   
+    trackMouse: true, // optional: allow swipe with mouse drag too
+  });
 
   return (
     <section
@@ -89,19 +98,24 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div className="relative flex items-center justify-center w-full h-[600px]">
-          {/* Arrows */}
+        <div
+          {...handlers}
+          className="relative flex items-center justify-center w-full h-[600px] touch-pan-x"
+        >
+          {/* Arrows - only visible on md+ */}
           <button
             onClick={handlePrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-30"
+            className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-30"
             style={{ backgroundColor: "#D9D9D9" }}
+            aria-label="Previous testimonial"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-30"
+            className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-30"
             style={{ backgroundColor: "#D9D9D9" }}
+            aria-label="Next testimonial"
           >
             <ChevronRight size={24} />
           </button>
@@ -175,8 +189,8 @@ export default function Testimonials() {
                               className="w-6 h-6 transform rotate-270"
                               style={{ color: "#002942" }}
                             />
-            </div>
-          </div>
+                          </div>
+                        </div>
 
                         {/* Author section at bottom */}
                         <div className="flex flex-col items-center justify-center mt-auto pt-4">
