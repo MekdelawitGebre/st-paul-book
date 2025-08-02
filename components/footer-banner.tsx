@@ -4,9 +4,8 @@ import { Mail, Facebook, Instagram, MessageSquare } from "lucide-react";
 
 export default function FooterBanner() {
   return (
-    <div className="w-full bg-gray-100 py-4 px-8">
+    <div className="w-full bg-gray-100 py-4 px-2 sm:px-6 md:px-8">
       <div className="flex items-center justify-between">
-        
         <div className="flex-1">
           <h3
             className="text-blue-900 font-bold text-lg

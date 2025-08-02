@@ -72,7 +72,7 @@ export default function Quotes() {
       }}
     >
       <div className="absolute inset-0 z-[-1]" />
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-2 sm:px-6">
         <div className="text-center mb-8">
           <h2
             className="text-3xl sm:text-5xl font-bold mb-4"
@@ -126,7 +126,7 @@ export default function Quotes() {
               return (
                 <div
                   key={quote.id}
-                  className={`absolute transition-all duration-700 ease-in-out px-6 sm:px-10 md:px-0 ${config.className} ${config.width} ${config.height}`}
+                  className={`absolute transition-all duration-700 ease-in-out px-2 sm:px-6 md:px-0 ${config.className} ${config.width} ${config.height}`}
                   style={{
                     transform: config.transform,
                   }}
@@ -138,7 +138,7 @@ export default function Quotes() {
                     aria-label={`Quote by ${quote.author.name}`}
                   >
                     <CardContent
-                      className={`flex flex-col justify-between h-full px-4 py-6 sm:px-6 md:px-8 ${config.contentOpacity} transition-opacity duration-500`}
+                      className={`flex flex-col justify-between h-full px-2 py-6 sm:px-6 md:px-8 ${config.contentOpacity} transition-opacity duration-500`}
                     >
                       <div className="text-left">
                         <Quote className="w-6 h-6 transform rotate-180 m-4" />

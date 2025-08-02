@@ -88,7 +88,7 @@ export default function Testimonials() {
           zIndex: -1,
         }}
       />
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-2 sm:px-6 md:px-8">
         <div className="text-center mb-8">
           <h2
             className="text-5xl font-bold mb-8"
@@ -159,7 +159,7 @@ export default function Testimonials() {
                     }}
                   >
                     <CardContent
-                      className={`flex flex-col items-center justify-center text-center h-full ${config.contentOpacity} transition-all duration-700 px-4 py-2`}
+                      className={`flex flex-col items-center justify-center text-center h-full ${config.contentOpacity} transition-all duration-700 px-2 py-2 sm:px-4`}
                     >
                       <div className="relative w-full h-full flex flex-col">
                         {/* Opening quote at top-left */}
@@ -174,7 +174,7 @@ export default function Testimonials() {
                         </div>
 
                         {/* Main content */}
-                        <div className="flex-1 flex flex-col justify-center px-4 pt-8">
+                        <div className="flex-1 flex flex-col justify-center px-2 pt-8 sm:px-4">
                           <p
                             className={`${config.fontSize} ${config.textBlur} text-justify`}
                             style={{

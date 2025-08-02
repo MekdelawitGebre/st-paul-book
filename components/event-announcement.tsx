@@ -56,7 +56,7 @@ export default function EventAnnouncement() {
               </div>
 
               <div className="text-left text-sm leading-relaxed flex items-center">
-                <div className="pr-8">{event.description}</div>
+                <div className="pr-0 sm:pr-8">{event.description}</div>
               </div>
             </div>
 

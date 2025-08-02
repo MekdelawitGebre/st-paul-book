@@ -16,14 +16,13 @@ export default function About() {
       }}
     >
       <div className="absolute inset-0 bg-white/10"></div>
-      <div className="relative z-10 container mx-auto px-8">
+      <div className="relative z-10 container mx-auto px-2 sm:px-6 md:px-8">
         <div className="text-center mb-4">
           <h2 className="text-5xl font-bold mb-4" style={{ color: "#03304c" }}>
             ነገረ መጽሐፍ
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          
           <div className="order-1 md:order-2 p-2 rounded-2xl text-center">
             <Image
               src="/book.png"
@@ -34,7 +33,6 @@ export default function About() {
             />
           </div>
 
-          
           <div className="order-2 md:order-1">
             <h6
               className="text-4xl font-light mb-8"

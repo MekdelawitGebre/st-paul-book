@@ -67,7 +67,7 @@ export default function ReaderQuotes() {
         minHeight: "100vh",
       }}
     >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-2 sm:px-6 md:px-8">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#03304c]">
             የአንባብያን አስተያየት
@@ -137,7 +137,7 @@ export default function ReaderQuotes() {
                       className={`flex flex-col justify-between h-full ${config.contentOpacity} transition-opacity duration-500`}
                     >
                       <div className="text-left">
-                        <Quote className="w-6 h-6 rotate-180 m-4" />
+                        <Quote className="w-6 h-6 rotate-180 m-2 sm:m-4" />
                         <p
                           className={`${config.fontSize} mb-4 text-justify`}
                           style={{
