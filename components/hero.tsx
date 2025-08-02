@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative py-2 md:py-2 py-1 overflow-hidden"
+      className="relative py-2 md:py-2 overflow-hidden"
       style={{
         backgroundImage: "url(/hero-bg.png)",
         backgroundSize: "cover",
