@@ -93,6 +93,7 @@ export default function Quotes() {
                               currentQuoteSlide === index
                                 ? "#ffffff"
                                 : "#9ca3af",
+                            transform: "rotate(180deg)",
                           }}
                         />
                       </div>
@@ -110,8 +111,15 @@ export default function Quotes() {
                         {quote.quote}
                       </p>
                       <div className="text-4xl text-gray-300 flex justify-end mb-2 ">
-                        <Quote className="text-4xl text-gray-300" />
+                        <Quote
+                          className="text-4xl text-gray-300  "
+                          style={{
+                            color: "#002942",
+                            transform: "rotate(-360deg)",
+                          }}
+                        />
                       </div>
+
                       <div className="text-right">
                         <p
                           className={`font-bold text-lg ${
