@@ -127,31 +127,49 @@ export default function Testimonials() {
                     transform: config.transform,
                   }}
                 >
-                  <Card className={`w-full h-full p-4 ${config.cardClasses}`}>
+                  <Card className={`w-full h-full p-2 ${config.cardClasses}`}>
                     <CardContent
-                      className={`flex flex-col items-center justify-center text-center h-full ${config.contentOpacity} transition-all duration-700 px-4 py-6`}
+                      className={`flex flex-col items-center justify-center text-center h-full ${config.contentOpacity} transition-all duration-700 px-4 py-2`}
                     >
-                      <Quote className="w-8 h-8 mb-4 mt-0 text-gray-400" />
-                      <p
-                        className={`${config.fontSize} mb-4 ${config.textBlur}`}
-                      >
-                        {testimonial.quote}
-                      </p>
-                      <div className="flex items-center gap-3 mt-4">
-                        <Image
-                          src={testimonial.author.image}
-                          alt={testimonial.author.name}
-                          width={48}
-                          height={48}
-                          className="rounded-full"
-                        />
-                        <div className="text-left">
-                          <p className={`font-semibold text-gray-800 text-sm`}>
-                            {testimonial.author.name}
+                      <div className="relative w-full h-full flex flex-col">
+                        {/* Opening quote at top-left */}
+                        <div className="absolute top-0 left-0">
+                          <Quote className="w-6 h-6 text-gray-400" />
+                        </div>
+
+                        {/* Main content */}
+                        <div className="flex-1 flex flex-col justify-center px-8 pt-8">
+                          <p
+                            className={`${config.fontSize} ${config.textBlur}`}
+                          >
+                            {testimonial.quote}
                           </p>
-                          <p className="text-xs text-gray-500">
-                            {testimonial.author.title}
-                          </p>
+
+                          {/* Closing quote after description */}
+                          <div className="flex justify-end mt-4">
+                            <Quote className="w-6 h-6 text-gray-400 transform rotate-180" />
+                          </div>
+                        </div>
+
+                        {/* Author section at bottom */}
+                        <div className="flex flex-col items-center justify-center mt-auto pt-4">
+                          <Image
+                            src={testimonial.author.image}
+                            alt={testimonial.author.name}
+                            width={48}
+                            height={48}
+                            className="rounded-full mb-2"
+                          />
+                          <div className="text-center">
+                            <p
+                              className={`font-semibold text-gray-800 text-sm`}
+                            >
+                              {testimonial.author.name}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {testimonial.author.title}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
