@@ -8,7 +8,7 @@ import quotesData from "@/data/reader-testimonials.json";
 
 const cardConfig = {
   active: {
-    width: "550px",
+    width: "500px",
     height: "400px",
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
