@@ -6,7 +6,7 @@ export default function Author() {
   return (
     <section
       id="author"
-      className="py-10"
+      className="py-20"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",

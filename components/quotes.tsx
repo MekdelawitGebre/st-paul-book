@@ -63,7 +63,7 @@ export default function Quotes() {
   return (
     <section
       id="quotes"
-      className="py-10 relative overflow-hidden"
+      className="py-20 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",

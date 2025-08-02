@@ -68,7 +68,7 @@ export default function ReaderQuotes() {
       }}
     >
       <div className="container mx-auto px-2 sm:px-4 md:px-6">
-        <div className="text-center mb-8">
+        <div className="text-center mb-2">
           <h2 className="text-5xl md:text-5xl font-bold mb-1 text-[#03304c]">
             የአንባብያን አስተያየት
           </h2>

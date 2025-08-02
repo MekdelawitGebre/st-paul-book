@@ -6,7 +6,7 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="pt-10 pb-0"
+      className="pt-20 pb-0"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",

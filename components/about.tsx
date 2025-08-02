@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-10 about relative"
+      className="py-20 about relative"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
