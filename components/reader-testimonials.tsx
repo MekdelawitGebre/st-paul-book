@@ -8,8 +8,8 @@ import quotesData from "@/data/reader-testimonials.json";
 
 const cardConfig = {
   active: {
-    width: "500px",
-    height: "400px",
+    width: "300px",
+    height: "450px",
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
     contentOpacity: "opacity-100",
@@ -20,19 +20,19 @@ const cardConfig = {
     width: "310px",
     height: "410px",
     transform: "translateX(-440px) scale(0.9)",
-    className: "scale-90 opacity-60 z-10",
-    contentOpacity: "opacity-60",
+    className: "scale-90 opacity-80 z-10",
+    contentOpacity: "opacity-100",
     fontSize: "text-[10px]",
-    bg: "bg-[#03304c] text-white",
+    bg: "bg-[#355970] text-white",
   },
   next: {
     width: "310px",
     height: "410px",
     transform: "translateX(440px) scale(0.9)",
-    className: "scale-90 opacity-60 z-10",
-    contentOpacity: "opacity-60",
+    className: "scale-90 opacity-80 z-10",
+    contentOpacity: "opacity-100",
     fontSize: "text-[10px]",
-    bg: "bg-[#03304c] text-white",
+    bg: "bg-[#355970] text-white",
   },
 };
 
@@ -120,7 +120,9 @@ export default function ReaderQuotes() {
                   className={`absolute transition-all duration-700 ease-in-out ${
                     config.className
                   } ${
-                    position === "active" ? "w-[90%] md:w-[550px]" : "w-[310px]"
+                    position === "active"
+                      ? "w-[80%] mx-4 sm:w-[70%] sm:mx-8 md:w-[450px] md:mx-0"
+                      : "w-[310px]"
                   }`}
                   style={{
                     height: config.height,
