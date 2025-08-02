@@ -78,7 +78,13 @@ export default function Testimonials() {
       />
       <div className="container mx-auto px-8">
         <div className="text-center mb-8">
-          <h2 className="text-5xl font-bold mb-8" style={{ color: "#03304c" }}>
+          <h2
+            className="text-5xl font-bold mb-8"
+            style={{
+              color: "#03304c",
+              fontFamily: "Menbere, system-ui, -apple-system, sans-serif",
+            }}
+          >
             የመምህራን አስተያየት
           </h2>
         </div>
@@ -154,7 +160,11 @@ export default function Testimonials() {
                         <div className="flex-1 flex flex-col justify-center px-4 pt-8">
                           <p
                             className={`${config.fontSize} ${config.textBlur} text-justify`}
-                            style={{ color: "#002942" }}
+                            style={{
+                              color: "#002942",
+                              fontFamily:
+                                "Menbere, system-ui, -apple-system, sans-serif",
+                            }}
                           >
                             {testimonial.quote}
                           </p>
@@ -180,11 +190,22 @@ export default function Testimonials() {
                           <div className="text-center">
                             <p
                               className={`font-semibold text-sm`}
-                              style={{ color: "#002942" }}
+                              style={{
+                                color: "#002942",
+                                fontFamily:
+                                  "Menbere, system-ui, -apple-system, sans-serif",
+                              }}
                             >
                               {testimonial.author.name}
                             </p>
-                            <p className="text-xs" style={{ color: "#002942" }}>
+                            <p
+                              className="text-xs"
+                              style={{
+                                color: "#002942",
+                                fontFamily:
+                                  "Menbere, system-ui, -apple-system, sans-serif",
+                              }}
+                            >
                               {testimonial.author.title}
                             </p>
                           </div>
