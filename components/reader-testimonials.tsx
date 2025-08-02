@@ -2,153 +2,182 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Quote, QuoteIcon } from "lucide-react";
-import readerTestimonialsData from "@/data/reader-testimonials.json";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useSwipeable } from "react-swipeable";
+import quotesData from "@/data/reader-testimonials.json";
 
-export default function ReaderTestimonials() {
-  const [currentSlide, setCurrentSlide] = React.useState(1);
-  const totalSlides = readerTestimonialsData.readerTestimonials.length;
+const cardConfig = {
+  active: {
+    width: "550px",
+    height: "400px",
+    transform: "translateX(0) scale(1.05)",
+    className: "scale-105 opacity-100 z-20",
+    contentOpacity: "opacity-100",
+    fontSize: "text-xs md:text-base", // 👈 Reduced for mobile
+    bg: "bg-white text-gray-800",
+  },
+  previous: {
+    width: "310px",
+    height: "410px",
+    transform: "translateX(-440px) scale(0.9)",
+    className: "scale-90 opacity-60 z-10",
+    contentOpacity: "opacity-60",
+    fontSize: "text-[10px]",
+    bg: "bg-[#03304c] text-white",
+  },
+  next: {
+    width: "310px",
+    height: "410px",
+    transform: "translateX(440px) scale(0.9)",
+    className: "scale-90 opacity-60 z-10",
+    contentOpacity: "opacity-60",
+    fontSize: "text-[10px]",
+    bg: "bg-[#03304c] text-white",
+  },
+};
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+export default function ReaderQuotes() {
+  const [currentQuoteSlide, setCurrentQuoteSlide] = React.useState(0);
+  const totalQuoteSlides = quotesData.readerTestimonials.length;
+
+  const nextQuoteSlide = () => {
+    setCurrentQuoteSlide((prev) => (prev + 1) % totalQuoteSlides);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  const prevQuoteSlide = () => {
+    setCurrentQuoteSlide(
+      (prev) => (prev - 1 + totalQuoteSlides) % totalQuoteSlides
+    );
   };
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextQuoteSlide(),
+    onSwipedRight: () => prevQuoteSlide(),
+    trackMouse: true,
+  });
 
   return (
     <section
-      id="readers"
-      className="py-20"
+      id="quotes"
+      className="py-20 relative overflow-hidden"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         minHeight: "100vh",
       }}
     >
       <div className="container mx-auto px-8">
         <div className="text-center mb-8">
-          <h2
-            className="text-5xl font-bold mb-4"
-            style={{
-              color: "#03304c",
-              fontFamily: "Menbere, system-ui, -apple-system, sans-serif",
-            }}
-          >
-            አንባብያን
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#03304c]">
+            የአንባብያን አስተያየት
           </h2>
         </div>
-        <div className="relative overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${
-                Math.max(0, currentSlide - 1) * 33.333
-              }%)`,
-            }}
-          >
-            {readerTestimonialsData.readerTestimonials.map(
-              (testimonial, index) => {
-                const isActive = currentSlide === index;
-                const isLeft = index === currentSlide - 1;
-                const isRight = index === currentSlide + 1;
 
-                return (
-                  <div
-                    key={testimonial.id}
-                    className="w-full md:w-1/3 flex-shrink-0 px-4 transition-all duration-500 ease-in-out"
+        <div
+          {...handlers}
+          className="relative flex items-center justify-center w-full h-[600px]"
+        >
+          {/* Arrows (hidden on mobile) */}
+          <button
+            onClick={prevQuoteSlide}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 text-white p-3 rounded-full shadow-lg z-30"
+            style={{ backgroundColor: "#D9D9D9" }}
+            aria-label="Previous quote"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={nextQuoteSlide}
+            className="hidden md:flex absolute right-1 top-1/2 -translate-y-1/2 text-white p-3 rounded-full shadow-lg z-30"
+            style={{ backgroundColor: "#D9D9D9" }}
+            aria-label="Next quote"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Cards */}
+          <div className="relative flex items-center justify-center w-full h-full">
+            {quotesData.readerTestimonials.map((quote, index) => {
+              const position =
+                index === currentQuoteSlide
+                  ? "active"
+                  : index ===
+                    (currentQuoteSlide - 1 + totalQuoteSlides) %
+                      totalQuoteSlides
+                  ? "previous"
+                  : index === (currentQuoteSlide + 1) % totalQuoteSlides
+                  ? "next"
+                  : "hidden";
+
+              if (position === "hidden") return null;
+
+              const config = cardConfig[position as keyof typeof cardConfig];
+
+              return (
+                <div
+                  key={quote.id}
+                  className={`absolute transition-all duration-700 ease-in-out ${
+                    config.className
+                  } ${
+                    position === "active" ? "w-[90%] md:w-[550px]" : "w-[310px]"
+                  }`}
+                  style={{
+                    height: config.height,
+                    transform: config.transform,
+                  }}
+                >
+                  <Card
+                    className={`w-full h-full p-0 rounded-xl shadow-xl ${config.bg}`}
+                    tabIndex={0}
+                    role="group"
+                    aria-label={`Quote by ${quote.author.name}`}
                   >
-                    <Card
-                      className={`transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg cursor-pointer hover:scale-105 ${
-                        isActive
-                          ? "bg-white text-gray-800 transform rotate-0 scale-100 opacity-100 z-20"
-                          : isLeft || isRight
-                          ? "bg-[#03304c] text-white transform rotate-0 scale-75 opacity-70 z-10"
-                          : "bg-[#03304c] text-white transform rotate-0 scale-75 opacity-70 z-10 md:block hidden"
-                      }`}
-                      onClick={() => goToSlide(index)}
+                    <CardContent
+                      className={`flex flex-col justify-between h-full ${config.contentOpacity} transition-opacity duration-500`}
                     >
-                      <CardContent className="p-6">
-                        <div className="text-4xl text-gray-300 flex items-start mb-2">
-                          <QuoteIcon
-                            className="text-4xl"
-                            style={{
-                              color: isActive ? "#032f4b" : "#ffffff",
-                            }}
-                          />
-                        </div>
+                      <div className="text-left">
+                        <Quote className="w-6 h-6 rotate-180 m-4" />
                         <p
-                          className={`text-lg leading-relaxed mb-4 ${
-                            isActive ? "text-gray-800" : "text-white"
-                          }`}
+                          className={`${config.fontSize} mb-4 text-justify`}
                           style={{
                             fontFamily:
                               "Kefa, system-ui, -apple-system, sans-serif",
                           }}
                         >
-                          {testimonial.quote}
+                          {quote.quote}
                         </p>
-                        <div className="text-4xl text-gray-300 flex justify-end mb-2">
-                          <Quote className="text-4xl text-gray-300" />
+                        <div className="flex justify-end">
+                          <Quote className="w-6 h-6" />
                         </div>
-                        <div className="text-right">
-                          <p
-                            className={`font-bold text-lg ${
-                              isActive ? "text-gray-800" : "text-white"
-                            }`}
-                            style={{
-                              fontFamily:
-                                "Kefa, system-ui, -apple-system, sans-serif",
-                            }}
-                          >
-                            {testimonial.author.name}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                );
-              }
-            )}
+                      </div>
+                      <div className="text-right mt-4">
+                        <p className="font-bold text-[11px] md:text-sm">
+                          {quote.author.name}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
           </div>
+        </div>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
-            style={{ backgroundColor: "#D9D9D9" }}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-10"
-            style={{ backgroundColor: "#D9D9D9" }}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Reader Slide Indicators */}
-          <div className="flex justify-center mt-4 space-x-2">
-            {readerTestimonialsData.readerTestimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  currentSlide === index
-                    ? "bg-gray-600"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
-              />
-            ))}
-          </div>
+        {/* Dots Indicator */}
+        <div className="flex justify-center mt-8 space-x-3">
+          {quotesData.readerTestimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentQuoteSlide(index)}
+              className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+                index === currentQuoteSlide
+                  ? "bg-[#03304c]"
+                  : "bg-gray-300 hover:bg-[#03304c]/70"
+              }`}
+              aria-label={`Go to quote ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
