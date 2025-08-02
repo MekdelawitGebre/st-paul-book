@@ -126,7 +126,7 @@ export default function Quotes() {
               return (
                 <div
                   key={quote.id}
-                  className={`absolute transition-all duration-700 ease-in-out px-2 sm:px-6 md:px-0 ${config.className} ${config.width} ${config.height}`}
+                  className={`absolute transition-all duration-700 ease-in-out px-6 sm:px-12 md:px-0 ${config.className} ${config.width} ${config.height}`}
                   style={{
                     transform: config.transform,
                   }}
