@@ -70,6 +70,9 @@ export default function Quotes() {
                 <div
                   key={quote.id}
                   className="w-full md:w-1/3 flex-shrink-0 px-4 transition-all duration-500 ease-in-out"
+                  style={{
+                    fontFamily: "Kefa, system-ui, -apple-system, sans-serif",
+                  }}
                 >
                   <Card
                     className={`transition-all duration-300 shadow-2xl max-w-md mx-auto rounded-lg cursor-pointer hover:scale-105 ${
