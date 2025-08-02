@@ -8,7 +8,7 @@ import testimonialsData from "@/data/testimonials.json";
 
 const cardConfig = {
   active: {
-    width: "420px",
+    width: "350px",
     height: "500px",
     transform: "translateX(0) scale(1.05) rotate(0deg)",
     className: "scale-105 opacity-100 z-20",
@@ -18,7 +18,7 @@ const cardConfig = {
     fontSize: "text-xs",
   },
   previous: {
-    width: "420px",
+    width: "350px",
     height: "500px",
     transform: "translateX(-300px) scale(0.9) rotate(-8deg)",
     className: "scale-90 opacity-60 z-10",
@@ -28,7 +28,7 @@ const cardConfig = {
     fontSize: "text-xs",
   },
   next: {
-    width: "420px",
+    width: "350px",
     height: "500px",
     transform: "translateX(300px) scale(0.9) rotate(8deg)",
     className: "scale-90 opacity-60 z-10",
@@ -138,9 +138,9 @@ export default function Testimonials() {
                         </div>
 
                         {/* Main content */}
-                        <div className="flex-1 flex flex-col justify-center px-8 pt-8">
+                        <div className="flex-1 flex flex-col justify-center px-4 pt-8">
                           <p
-                            className={`${config.fontSize} ${config.textBlur}`}
+                            className={`${config.fontSize} ${config.textBlur} text-justify`}
                           >
                             {testimonial.quote}
                           </p>
