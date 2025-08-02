@@ -54,11 +54,14 @@ export default function Testimonials() {
     );
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   // Swipe handlers using react-swipeable
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrevious(),
-   
     trackMouse: true, // optional: allow swipe with mouse drag too
   });
 
@@ -231,6 +234,22 @@ export default function Testimonials() {
               );
             })}
           </div>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="flex justify-center mt-8 space-x-3">
+          {testimonialsData.testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+                index === currentSlide
+                  ? "bg-[#03304c]"
+                  : "bg-gray-300 hover:bg-[#03304c]/70"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
