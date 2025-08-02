@@ -163,7 +163,7 @@ export default function Testimonials() {
                             style={{
                               color: "#002942",
                               fontFamily:
-                                "Menbere, system-ui, -apple-system, sans-serif",
+                                "Kefa, system-ui, -apple-system, sans-serif",
                             }}
                           >
                             {testimonial.quote}
@@ -193,7 +193,7 @@ export default function Testimonials() {
                               style={{
                                 color: "#002942",
                                 fontFamily:
-                                  "Menbere, system-ui, -apple-system, sans-serif",
+                                  "Kefa, system-ui, -apple-system, sans-serif",
                               }}
                             >
                               {testimonial.author.name}
@@ -203,7 +203,7 @@ export default function Testimonials() {
                               style={{
                                 color: "#002942",
                                 fontFamily:
-                                  "Menbere, system-ui, -apple-system, sans-serif",
+                                  "Kefa, system-ui, -apple-system, sans-serif",
                               }}
                             >
                               {testimonial.author.title}
