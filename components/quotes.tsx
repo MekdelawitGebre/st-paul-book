@@ -102,10 +102,14 @@ export default function Quotes() {
                             ? "text-white"
                             : "text-gray-800"
                         }`}
+                        style={{
+                          fontFamily:
+                            "Kefa, system-ui, -apple-system, sans-serif",
+                        }}
                       >
                         {quote.quote}
                       </p>
-                      <div className="text-4xl text-gray-300 flex justify-end mb-2">
+                      <div className="text-4xl text-gray-300 flex justify-end mb-2 ">
                         <Quote className="text-4xl text-gray-300" />
                       </div>
                       <div className="text-right">

@@ -35,7 +35,13 @@ export default function ReaderTestimonials() {
     >
       <div className="container mx-auto px-8">
         <div className="text-center mb-8">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: "#03304c" }}>
+          <h2
+            className="text-5xl font-bold mb-4"
+            style={{
+              color: "#03304c",
+              fontFamily: "Menbere, system-ui, -apple-system, sans-serif",
+            }}
+          >
             አንባብያን
           </h2>
         </div>
@@ -82,6 +88,10 @@ export default function ReaderTestimonials() {
                           className={`text-lg leading-relaxed mb-4 ${
                             isActive ? "text-gray-800" : "text-white"
                           }`}
+                          style={{
+                            fontFamily:
+                              "Kefa, system-ui, -apple-system, sans-serif",
+                          }}
                         >
                           {testimonial.quote}
                         </p>
@@ -93,6 +103,10 @@ export default function ReaderTestimonials() {
                             className={`font-bold text-lg ${
                               isActive ? "text-gray-800" : "text-white"
                             }`}
+                            style={{
+                              fontFamily:
+                                "Kefa, system-ui, -apple-system, sans-serif",
+                            }}
                           >
                             {testimonial.author.name}
                           </p>
