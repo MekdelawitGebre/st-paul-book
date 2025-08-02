@@ -33,10 +33,11 @@ const TestimonialCard = ({
   isPrevious,
   isNext,
 }: TestimonialCardProps) => {
-  // Unified styling configuration for exact image effect
+  // Unified styling configuration for book-like size
   const cardConfig = {
     active: {
-      width: "380px",
+      width: "320px",
+      height: "480px",
       transform: "translateX(0) scale(1.05) rotate(0deg)",
       className: "scale-105 opacity-100 z-20",
       cardClasses: "border border-gray-200 shadow-xl",
@@ -44,7 +45,8 @@ const TestimonialCard = ({
       textBlur: "blur-0",
     },
     previous: {
-      width: "260px",
+      width: "280px",
+      height: "360px",
       transform: "translateX(-60px) scale(0.9) rotate(-6deg)",
       className: "scale-90 opacity-60 z-10",
       cardClasses: "border border-gray-200 shadow-sm",
@@ -52,7 +54,8 @@ const TestimonialCard = ({
       textBlur: "blur-sm",
     },
     next: {
-      width: "260px",
+      width: "280px",
+      height: "360px",
       transform: "translateX(60px) scale(0.9) rotate(6deg)",
       className: "scale-90 opacity-60 z-10",
       cardClasses: "border border-gray-200 shadow-sm",
@@ -82,61 +85,62 @@ const TestimonialCard = ({
       className={`${baseStyles} ${config.className}`}
       style={{
         width: config.width,
+        height: config.height,
         transform: config.transform,
       }}
     >
-      <Card className={`${baseCardClasses} ${config.cardClasses}`}>
-        <CardContent className="p-4 sm:p-5 transition-all duration-500">
-          {/* Quote Icon */}
+      <Card className={`${baseCardClasses} ${config.cardClasses} h-full`}>
+        <CardContent className="p-3 sm:p-4 transition-all duration-500 h-full flex flex-col">
+          {/* Quote Icon - Always clear */}
           <div
-            className={`text-2xl sm:text-3xl text-gray-400 flex items-start transition-all duration-300 ${config.contentOpacity}`}
+            className={`text-xl sm:text-2xl text-gray-400 flex items-start transition-all duration-300 ${config.contentOpacity}`}
           >
             <QuoteIcon
-              className="text-2xl sm:text-3xl transition-all duration-300"
+              className="text-xl sm:text-2xl transition-all duration-300"
               style={{ color: "#9ca3af" }}
             />
           </div>
 
-          {/* Quote Text - Only this gets blurred */}
+          {/* Quote Text - Only this gets blurred for non-active cards */}
           <p
-            className={`text-xs sm:text-sm leading-relaxed mb-3 text-gray-600 text-justify px-2 sm:px-3 transition-all duration-300 ${config.contentOpacity} ${config.textBlur}`}
+            className={`text-xs leading-relaxed mb-2 text-gray-600 text-justify px-1 sm:px-2 transition-all duration-300 ${config.contentOpacity} ${config.textBlur} flex-grow`}
           >
             {testimonial.quote}
           </p>
 
-          {/* Closing Quote */}
+          {/* Closing Quote - Always clear */}
           <div
-            className={`text-2xl sm:text-3xl text-gray-400 flex justify-end transition-all duration-300 ${config.contentOpacity}`}
+            className={`text-xl sm:text-2xl text-gray-400 flex justify-end transition-all duration-300 ${config.contentOpacity}`}
           >
-            <Quote className="text-2xl sm:text-3xl text-gray-400 transition-all duration-300" />
+            <Quote className="text-xl sm:text-2xl text-gray-400 transition-all duration-300" />
           </div>
 
-          {/* Author Section */}
+          {/* Author Section - Always clear */}
           <div
-            className={`flex flex-col items-center text-center transition-all duration-500 ${config.contentOpacity}`}
+            className={`flex flex-col items-center text-center transition-all duration-500 ${config.contentOpacity} mt-auto`}
           >
             {testimonial.author.image ? (
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-sm overflow-hidden flex items-center justify-center transition-all duration-300">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-sm overflow-hidden flex items-center justify-center transition-all duration-300">
                 <Image
                   src={testimonial.author.image}
                   alt={testimonial.author.name}
-                  width={56}
-                  height={56}
+                  width={48}
+                  height={48}
                   className="w-full h-full object-cover transition-all duration-300"
                 />
               </div>
             ) : (
               <div
-                className={`w-12 h-12 sm:w-14 sm:h-14 bg-${testimonial.author.avatarColor} rounded-full mb-2 shadow-sm flex items-center justify-center transition-all duration-300`}
+                className={`w-10 h-10 sm:w-12 sm:h-12 bg-${testimonial.author.avatarColor} rounded-full mb-1 shadow-sm flex items-center justify-center transition-all duration-300`}
               >
-                <span className="text-white font-bold text-sm sm:text-base transition-all duration-300">
+                <span className="text-white font-bold text-xs sm:text-sm transition-all duration-300">
                   {testimonial.author.avatar}
                 </span>
               </div>
             )}
 
-            <div className="mt-2 transition-all duration-300">
-              <p className="font-semibold text-gray-800 text-xs sm:text-sm transition-all duration-300">
+            <div className="mt-1 transition-all duration-300">
+              <p className="font-semibold text-gray-800 text-xs transition-all duration-300">
                 {testimonial.author.name}
               </p>
               <p className="text-gray-500 text-xs transition-all duration-300">
