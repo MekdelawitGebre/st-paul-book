@@ -121,7 +121,7 @@ export default function ReaderQuotes() {
                     config.className
                   } ${
                     position === "active"
-                      ? "w-[80%] mx-4 sm:w-[70%] sm:mx-8 md:w-[450px] md:mx-0"
+                      ? "w-[80%] mx-8 sm:w-[70%] sm:mx-12 md:w-[450px] md:mx-0"
                       : "w-[310px]"
                   }`}
                   style={{
