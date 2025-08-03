@@ -8,7 +8,7 @@ export default function Hero() {
       id="hero"
       className="relative py-2 md:py-2 overflow-hidden"
       style={{
-        backgroundImage: "url(/hero-bg.png)",
+        backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
