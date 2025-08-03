@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "መርሐ ግብራት",
+    "month": "ነሐሴ",
+    "day": "6",
+    "mainTitle": "የመጽሐፍ ምርቃት",
+    "description": "ብጹዓን አበው ሊቃነ ጳጳሳትና ታላለቅ መምህራን በተገኙበት ቅዱስ ጳውሎስ በሚል ርዕስ የተዘጋጀው ይህ መጽሐፍ የሚመረቅ ይሆናል",
+    "descriptionEn": "This book, prepared under the title 'Saint Paul,' will be launched/dedicated in the presence of blessed fathers, bishops, and great teachers.",
+    "dayOfWeek": "ቅዳሜ",
+    "dayOfWeekEn": "Saturday",
+    "time": "1:00",
+    "location": "አድራሻ ቦታ",
+    "locationEn": "Address/Location",
+    "backgroundColor": "bg-[#03304c]",
+    "textColor": "text-white",
+    "accentColor": "text-cyan-400"
+  }
+]
