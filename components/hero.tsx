@@ -21,7 +21,7 @@ export default function Hero() {
               src="/hero-text-image.png"
               alt="Saint Paul"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>
