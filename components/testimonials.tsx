@@ -62,7 +62,7 @@ export default function Testimonials() {
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrevious(),
-    trackMouse: true, // optional: allow swipe with mouse drag too
+    trackMouse: true, // allow swipe with mouse drag too
   });
 
   return (

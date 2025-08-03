@@ -13,7 +13,7 @@ const cardConfig = {
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
     contentOpacity: "opacity-100",
-    fontSize: "text-xs md:text-base", // 👈 Reduced for mobile
+    fontSize: "text-xs md:text-base", 
     bg: "bg-white text-gray-800",
   },
   previous: {
