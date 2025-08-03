@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     icon: [
       {
         url: "/st-paul-book.png",
-        sizes: "32x32",
+        sizes: "48x48",
         type: "image/png",
       },
       {
