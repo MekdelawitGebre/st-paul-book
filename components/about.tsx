@@ -64,7 +64,7 @@ export default function About() {
             <div className="text-right">
               <p className="text-xl font-semibold" style={{ color: "#03304c" }}>
                 ዲን.አቤል ካሳሁን <br />
-                <p className="font-light">አዘጋጅ</p>
+                <span className="font-light">አዘጋጅ</span>
               </p>
             </div>
           </div>
