@@ -16,13 +16,12 @@ export default function Hero() {
     >
       <div className="container mx-auto px-2 sm:px-6 md:px-8 relative z-4">
         <div className="flex justify-center items-center min-h-[400px] md:min-h-[600px] py-2 md:py-4">
-          <div className="relative w-full">
+          <div className="relative w-full h-[400px] md:h-[600px]">
             <Image
               src="/hero-text-image.png"
               alt="Saint Paul"
-              width={400}
-              height={400}
-              className="w-full h-auto rounded-lg object-contain"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
