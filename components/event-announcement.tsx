@@ -50,7 +50,7 @@ export default function EventAnnouncement() {
               </div>
 
               <div className="text-center flex items-center justify-center">
-                <div className="text-6xl font-bold leading-tight">
+                <div className="text-6xl font-bold text-left leading-tight">
                   {event.mainTitle}
                 </div>
               </div>
@@ -62,7 +62,7 @@ export default function EventAnnouncement() {
 
             <div className="hidden md:grid grid-cols-3 gap-6 items-center mt-4">
               <div className="text-medium">{event.dayOfWeek}</div>
-              <div className="text-center">{event.time}</div>
+              <div className="text-left">{event.time}</div>
               <div className="text-sm font-bold text-left">
                 {event.location}
               </div>
