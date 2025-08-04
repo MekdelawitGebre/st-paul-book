@@ -49,7 +49,7 @@ export default function EventAnnouncement() {
                 <div className="text-8xl font-medium">{event.day}</div>
               </div>
 
-              <div className="text-center flex items-center justify-center">
+              <div className="text-left flex">
                 <div className="text-6xl font-bold text-left leading-tight">
                   {event.mainTitle}
                 </div>

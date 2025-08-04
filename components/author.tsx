@@ -52,19 +52,6 @@ export default function Author() {
               faithful and those seeking a deeper understanding of Orthodox
               Christianity.
             </p>
-            <div className="text-right">
-              <p
-                className="text-xl font-semibold"
-                style={{
-                  color: "#03304c",
-                  fontFamily: "Poppins, system-ui, -apple-system, sans-serif",
-                }}
-              >
-                Dcn. Abel Kassahun
-                <br />
-                Author
-              </p>
-            </div>
           </div>
         </div>
       </div>

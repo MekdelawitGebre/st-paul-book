@@ -62,7 +62,12 @@ export default function Testimonials() {
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrevious(),
-    trackMouse: true, // allow swipe with mouse drag too
+    trackMouse: false, // disable mouse tracking to avoid conflicts
+    preventScrollOnSwipe: false, // allow vertical scrolling
+    delta: 50, // balanced threshold for swipe detection
+    trackTouch: true,
+    touchEventOptions: { passive: true }, // make touch events passive
+    rotationAngle: 30, // allow more forgiving horizontal swipes
   });
 
   return (
@@ -101,14 +106,11 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div
-          {...handlers}
-          className="relative flex items-center justify-center w-full h-[600px] touch-pan-x"
-        >
+        <div className="relative flex items-center justify-center w-full h-[600px]">
           {/* Arrows - only visible on md+ */}
           <button
             onClick={handlePrevious}
-            className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-80 transition-colors shadow-lg z-30"
+            className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full hover:opacity-100 transition-colors shadow-lg z-30"
             style={{ backgroundColor: "#D9D9D9" }}
             aria-label="Previous testimonial"
           >
@@ -124,7 +126,10 @@ export default function Testimonials() {
           </button>
 
           {/* Cards */}
-          <div className="relative flex items-center justify-center w-full h-full">
+          <div
+            {...handlers}
+            className="relative flex items-center justify-center w-full h-full touch-pan-y"
+          >
             {testimonialsData.testimonials.map((testimonial, index) => {
               const position =
                 index === currentSlide
