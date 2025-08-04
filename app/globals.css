@@ -67,6 +67,32 @@
       padding-right: 0.5rem;
     }
   }
+
+  /* Mobile-specific scroll improvements */
+  @media (max-width: 768px) {
+    html,
+    body {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
+    }
+
+    /* Ensure proper touch scrolling */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Prevent horizontal scroll on mobile */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Improve touch response */
+    button,
+    a,
+    [role="button"] {
+      touch-action: manipulation;
+    }
+  }
 }
 
 /* Glass Effect Styles */
@@ -250,4 +276,25 @@
   font-family: "Ketefa", "Menbere", system-ui, -apple-system, sans-serif !important;
   font-weight: normal;
   font-style: normal;
+}
+
+/* Testimonials carousel mobile improvements */
+@media (max-width: 768px) {
+  /* Ensure testimonials section doesn't interfere with scroll */
+  #testimonials {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Improve carousel touch handling */
+  #testimonials [data-swipeable] {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Prevent horizontal scroll in testimonials */
+  #testimonials .relative {
+    overflow-x: hidden;
+  }
 }

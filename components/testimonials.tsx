@@ -58,17 +58,20 @@ export default function Testimonials() {
     setCurrentSlide(index);
   };
 
-  // Swipe handlers using react-swipeable
+  // Improved swipe handlers with better mobile support
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
     onSwipedRight: () => handlePrevious(),
-    trackMouse: true, // allow swipe with mouse drag too
+    trackMouse: false, // Disable mouse tracking on mobile
+    preventScrollOnSwipe: false, // Don't prevent scroll on swipe
+    delta: 50, // Minimum swipe distance
+    swipeDuration: 500, // Maximum swipe duration
   });
 
   return (
     <section
       id="testimonials"
-      className="py-20 relative overflow-hidden"
+      className="py-20 relative"
       style={{
         backgroundImage: "url(/network-bg.png)",
         backgroundSize: "cover",
@@ -77,6 +80,7 @@ export default function Testimonials() {
         minHeight: "100vh",
       }}
     >
+      {/* Simplified background without problematic transforms */}
       <div
         className="absolute inset-0"
         style={{
@@ -84,7 +88,6 @@ export default function Testimonials() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          transform: "translateZ(-1px) scale(2)",
           zIndex: -1,
         }}
       />
@@ -103,7 +106,9 @@ export default function Testimonials() {
 
         <div
           {...handlers}
-          className="relative flex items-center justify-center w-full h-[600px] touch-pan-x"
+          className="relative flex items-center justify-center w-full h-[600px]"
+          style={{ touchAction: "pan-y" }} // Allow vertical scrolling
+          data-swipeable="true"
         >
           {/* Arrows - only visible on md+ */}
           <button
