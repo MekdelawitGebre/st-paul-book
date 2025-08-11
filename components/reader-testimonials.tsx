@@ -13,7 +13,7 @@ const cardConfig = {
     transform: "translateX(0) scale(1.05)",
     className: "scale-105 opacity-100 z-20",
     contentOpacity: "opacity-100",
-    fontSize: "text-xs md:text-base", 
+    fontSize: "text-xs md:text-base",
     bg: "bg-white text-gray-800",
   },
   previous: {
@@ -130,13 +130,13 @@ export default function ReaderQuotes() {
                   }}
                 >
                   <Card
-                    className={`w-full h-full p-0 rounded-xl shadow-xl ${config.bg}`}
+                    className={`w-full h-fit  p-0 rounded-xl shadow-xl ${config.bg}`}
                     tabIndex={0}
                     role="group"
                     aria-label={`Quote by ${quote.author.name}`}
                   >
                     <CardContent
-                      className={`flex flex-col justify-between h-full ${config.contentOpacity} transition-opacity duration-500`}
+                      className={`flex flex-col justify-between  ${config.contentOpacity} transition-opacity duration-500`}
                     >
                       <div className="text-left">
                         <Quote className="w-6 h-6 rotate-180 m-2 sm:m-4" />
